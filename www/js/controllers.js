@@ -98,7 +98,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             for (var j = 0; j < $scope.userSweets.length; j++) {
                 if (angular.equals($scope.userSweets[j].get("receiverPhone"), receiverPhone)) {
-                    //console.log("**********************"+receiverPhone);
+                    
                     return $scope.userSweets[j].get("receiverAvatar");
                 }
             }
@@ -130,8 +130,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
 
         $scope.nextPage = function () {
-            console.log("nextPage: " + $scope.currentPage * $scope.pageSize);
-            console.log("nextPage: " + $scope.friends.length);
+           
             if ((( ($scope.currentPage + 1) * $scope.pageSize) < $scope.friends.length - 1) && $scope.pageSize != $scope.friends.length) {
                 $scope.currentPage++;
             }
@@ -144,8 +143,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
 
         $scope.nextPage_place = function () {
-            console.log("nextPage_place: " + $scope.currentPagePlace * $scope.pageSize);
-            console.log("nextPage_place: " + $rootScope.listPlaces.length);
+           
             if ((( ($scope.currentPagePlace + 1) * $scope.pageSize) < $rootScope.listPlaces.length - 1) && $scope.pageSize != $rootScope.listPlaces.length) {
                 $scope.currentPagePlace++;
             }
@@ -158,10 +156,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
 
         $scope.nextPage_interaction = function () {
-            console.log("nextPage InterAction: " + $scope.currentPageInteraction * $scope.pageSize);
-            console.log("nextPage InterAction $scope.timelines.length: " + $scope.timelines.length);
+           
             if ((( ($scope.currentPageInteraction + 1) * $scope.pageSize) < $scope.timelines.length - 1) && $scope.pageSize != $scope.timelines.length) {
-                console.log("nextPage InterAction: " + $scope.currentPageInteraction++);
+                
                 $scope.currentPageInteraction++;
             }
         };
@@ -173,10 +170,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
 
         $scope.nextPage_placesweet = function () {
-            console.log("nextPage InterAction: " + $scope.currentPageInteraction * $scope.pageSizePlace);
-            console.log("nextPage InterAction $scope.timelines.length: " + $rootScope.placeSweets.length);
+           
             if ((( ($scope.currentPageInteraction + 1) * $scope.pageSizePlace) < $rootScope.placeSweets.length - 1) && $scope.pageSizePlace != $rootScope.placeSweets.length) {
-                console.log("nextPage InterAction: " + $scope.currentPageInteraction++);
+                
                 $scope.currentPageInteraction++;
             }
         };
@@ -186,7 +182,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };*/
 
         /*$scope.setting = function () {
-            console.log("logout process start.");
+           
             $scope.setLastVisitedPage();
             $location.path('/user/setting');
         }*/
@@ -261,7 +257,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         $scope.saveInteractionEvent = function (event) {
             $scope.interactionData.event = event.event;
-            //console.log(event);
+           
             interactionService.saveEvent($scope.currentInteraction, event.event, function (rUserInteraction) {
                 $scope.safeApply(function () {
                     $scope.interactionData.event = rUserInteraction.get("event");
@@ -287,12 +283,12 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         $scope.setGreetingBackground = function () {
 //            var index = $scope.selectedGreetingBackgroundIndex++;
-            //console.log($scope.newSweet.greetingBackground+" "+$scope.selectedGreetingBackgroundIndex);
+           
             if ($scope.selectedGreetingBackgroundIndex == CONSTANTS.GREETING_BACKGROUNDS.length - 1) {
                 $scope.selectedGreetingBackgroundIndex = -1;
             }
             $scope.newSweet.greetingBackground = CONSTANTS.GREETING_BACKGROUNDS[++$scope.selectedGreetingBackgroundIndex];
-            //console.log($scope.newSweet.greetingBackground);
+            
 
         };
 
@@ -333,7 +329,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };*/
 
         $rootScope.$on('user_interaction', function () {
-            //console.log("---Recevied user_interaction---"+interactionService.getInteraction());
+            
 //           $scope.getUserSweets();
             $scope.showInteraction(interactionService.getInteraction());
 
@@ -354,7 +350,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };*/
 
         /*$scope.setSweetExpression = function (expression) {
-            //console.log("--- setSweetExpression --- "+expression);
+            
 
             switch (expression) {
                 case 'picture':
@@ -364,7 +360,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 case 'star':
                     $scope.newSweet.star = !$scope.newSweet.star;
                     $scope.newSweet.starImage = ($scope.newSweet.starImage == "img/Star-Fuller-Brighter.png") ? "img/Star-Default-Fuller.png" : "img/Star-Fuller-Brighter.png";
-                    //console.log($scope.newSweet.starImage);
+                    
                     break;
                 case 'heart':
                     $scope.newSweet.heart = !$scope.newSweet.heart;
@@ -379,7 +375,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 //  Purple deprecated
         /*$scope.setGesture = function (type) {
             var index = $scope.selectedGestureTextIndex++;
-            //console.log("---setGesture---"+index);
+            
             $scope.newSweet.gestureType = type;
             switch (type) {
                 case "sayThankYou":
@@ -443,7 +439,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.sendSweet = function () {
 
             var updateAvailable = false;
-            //console.log("Saving and delivering sweet: "+$scope.newSweet);
+            
 
             UpdateService.checkForUpdates(function (rUpdateAvailable) {
                 if (rUpdateAvailable) {
@@ -458,7 +454,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
 
             sweetService.saveSweet($scope.newSweet, function (rSweet, rUserSweet) {
-                //console.log(rSweet + " "+rUserSweet);
+                
                 sweetService.sendSweet(rSweet, $rootScope.fromEmailAddress, function (success) {
                     $scope.safeApply(function () {
                         if (!success) $rootScope.info.title = CONSTANTS.ERROR.DEFAULT;
@@ -489,7 +485,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             $scope.allfriend = friend;
             $scope.magicButtonImage = $scope.allfriend['picture'];
-            console.log("---sendSweetPlace() " + _.pairs($scope.allfriend));
+            
 
             $scope.section.sending = true;
 
@@ -515,7 +511,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             $scope.friend = friend;
             $scope.magicButtonImage = $scope.friend['picture']['data']['url'];
-            console.log("---setFriend() " + _.pairs($scope.friend));
+            
 
             $scope.section.sending = true;
             $location.path("/location/sent");
@@ -536,10 +532,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newSweet.receiverPicture = $scope.friend["picture"]["data"]["url"];
             $scope.newSweet.gesture = CONSTANTS.GESTURES[0].sub_actions[2];
 
-            console.log($scope.newSweet.receiverName);
-            console.log($scope.newSweet.gesture);
-            console.log($scope.newSweet);
-            console.log("----Kashif-------");
+           
 
             $scope.newSweet.text = "Thank You";
 //            $scope.newSweet.template = $scope.newSweet.gesture.template;
@@ -581,11 +574,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newSweet.receiverPicture = $scope.allfriend["picture"];
             $scope.newSweet.gesture = CONSTANTS.GESTURES[0].sub_actions[2];
 
-            console.log($scope.newSweet.receiverName);
-            console.log($scope.newSweet.gesture);
-            console.log($scope.allfriend);
-            console.log("----KashifAll-------");
-
+            
             $scope.newSweet.text = "Thank You, all of you";
 //            $scope.newSweet.template = $scope.newSweet.gesture.template;
 
@@ -620,11 +609,11 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
          query.get("kWQUnPONOk", {
          success:function(placeusers) {
-         console.log("service: placeusers() -> "+_.pairs(placeusers));
+         
          var friends = placeusers.data;
          },
          error:function() {
-         console.log("service: placeusers() -> sweet not found.");
+         
          }
          });
          }*/
@@ -643,8 +632,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
 //            $scope.setGestureType(gestureType);
 
-            console.log($scope.newSweet.receiverName);
-            console.log($scope.newSweet.gesture);
+           
 
             $scope.newSweet.text = "";
 //            $scope.newSweet.template = $scope.newSweet.gesture.template;
@@ -690,15 +678,13 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     $scope.newSweet.senderName = $scope.socialNetworks[0].get('me')['first_name'] + " " + $scope.socialNetworks[0].get('me')['last_name'];
                     $scope.newSweet.senderPicture = $scope.socialNetworks[0].get('me')['picture'];
                     if ($scope.newSweet.senderPicture)
-                        console.log("###Sender Picture### " + $scope.newSweet.senderPicture);
+                        
 //                    $rootScope.sweeter.name = $scope.newSweet.senderName;
                     $rootScope.sweeter.picture = $scope.newSweet.senderPicture;
 
                     $scope.newSweet.senderChannel = $scope.socialNetworks[0].get('name');
                     $scope.newSweet.senderPhone = $scope.loggedInUser.get("authData")["facebook"]["id"];
-                    console.log("---Facebook ID---" + $scope.newSweet.senderPhone);
-                    console.log("---Facebook Name---" + $scope.newSweet.senderName);
-//                    console.log($scope.friends);
+                    
 
 //                    $scope.setMe();
                     cb("done");
@@ -724,7 +710,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.friend = friend;
             $scope.magicButtonImage = $scope.friend['picture']['data']['url'];
             $scope.magicButtonImage = "http://graph.facebook.com/" + $scope.friend['id'] + "/picture?width=200&height=200";
-            console.log("---setFriend() " + _.pairs($scope.friend));
+            
 //            if(!$scope.squeezed)
 //                $scope.enableGestureSendActions();
 //            if($scope.squeezed)
@@ -742,7 +728,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 $scope.friend = friend;
                 $scope.magicButtonImage = $scope.friend['picture']['data']['url'];
-                console.log("---setFriend() " + _.pairs($scope.friend));
+                
                 //            if(!$scope.squeezed)
                 $scope.enableGestureSendActions();
                 //            if($scope.squeezed)
@@ -754,27 +740,27 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
 
         /*$scope.$watch("friend", function (oldValue, newValue) {
-            console.log("$scope.friend changed. " + _.pairs(oldValue) + "---" + _.pairs(newValue));
+            
 
             //$scope.magicButtonImage = userService.currentUser().get("authData")['picture']['data']['url'];
 
             $scope.sweets = [];
             if ($scope.friend) {
                 $rootScope.sweeter.name = $scope.friend["name"]; //comment by kashif undo this change
-                console.log($scope.friend);
+                
 //                $scope.twoWayInteraction();
             }
 
             sweetService.getUserPlaces($scope.friend.id, function (placeUserSweets) {
-                //console.log("Successfully retrieved placeUserSweets " + placeUserSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.listPlaces = placeUserSweets;
-                    //console.log("Successfully retrieved listPlaces " + $rootScope.listPlaces.length + " scores.");
+                   
                 });
             });
 
             sweetService.getPlaces(function (placeSweets) {
-                //console.log("Successfully retrieved place" + placeSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.places = placeSweets;
                 });
@@ -785,7 +771,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.twoWayInteraction = function () {
 
             var friendId = $scope.friend["id"];
-            console.log("---$scope.twoWayInteraction friendId --- " + friendId);
+           
 
             $scope.interaction = {};
             $scope.interaction[friendId] = {};
@@ -798,7 +784,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 userService.getUserByChannel(friendId, function (rUser) {
                     if (rUser) {
-                        console.log("---rUser---" + rUser.id);
+                  
                         loadInteraction(rUser.id, userService.currentUser().get("username"),
                             function (rSweets) {
                                 $scope.interaction[friendId].sweets = $scope.interaction[friendId].sweets.concat(rSweets);
@@ -810,12 +796,12 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };*/
 
         /*var loadInteraction = function (id, phone, cb) {
-            console.log("---loadInteraction whose friendId--- " + id + " " + phone);
+           
             interactionService.getInteractionWith(id, phone, function (rUserSweet) {
                 if (rUserSweet) {
                     sweetService.getSweetsBySweetIds(rUserSweet.get("sweets"), function (rSweets) {
                         if (rSweets) {
-//                            console.log("---RSWEETS--- "+ rSweets);
+//                           
                             $scope.safeApply(function () {
                                 cb(rSweets);
                             });
@@ -829,7 +815,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.sweetForInteraction = function (sweet) {
 
             $scope.safeApply(function () {
-                console.log("---sweet_interaction---on ");
+               
                 $scope.hideFriendsList = true;
 
                 $scope.friend = {};
@@ -859,7 +845,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         /*$scope.loadFeeds = function () {
             $scope.feeds = [];
-            console.log("--loadFeeds--- " + userService.currentUser().get("username"));
+  
             sweetService.getSweetsByReceiverPhone(userService.currentUser().get("username"), function (rSweets) {
                 if (rSweets) {
                     $scope.safeApply(function () {
@@ -884,15 +870,15 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     sweetService.getSweetsBySweetIds(sweetIds, function (rSweets) {
                         $scope.safeApply(function () {
                             $scope.timelines = rSweets;
-                            console.log("sweet length timelines" + $scope.timelines.length);
+                           
                         });
                     });
 
                     sweetService.getUserFollowingSweet(function (fSweets) {
-                        console.log("get follow places sweets" + fSweets.length);
+                      
                         $scope.timelinesfollow = fSweets;
                         $scope.timelinesfollow = $scope.timelinesfollow.concat($scope.timelines);
-                        console.log("get follow places sweets -->" + $scope.timelinesfollow.length);
+                       
                     });
                 }
 
@@ -988,11 +974,11 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
 
         /*$scope.gestures = CONSTANTS.GESTURES;
-        console.log($scope.gestures);
+      
 
         $scope.updateGestures = function (gesture) {
             $scope.newSweet.gesture = _.omit(gesture, '$$hashKey');
-            console.log("---Update--- " + _.pairs($scope.newSweet.gesture));
+           
             if (gesture.sub_actions) {
                 $scope.$parent.setSubActionsState(true);
                 $scope.gestures = gesture.sub_actions;
@@ -1019,7 +1005,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             if (mFriendSearchText.length > 2) {
                 for (var i = 0; i < $scope.friends.length; i++) {
                     if ($scope.friends[i]['name'].toLowerCase().indexOf(mFriendSearchText.toLowerCase()) == 0) {
-                        console.log($scope.friends[i]['name'].toLowerCase().indexOf(mFriendSearchText.toLowerCase()));
+                       
                         $scope.setFriend($scope.friends[i]);
                         $scope.section.friendSearchText = "";
                         $scope.section.showPeopleSearchBox = false;
@@ -1039,7 +1025,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             if ($scope.squeezeCounter >= 3) {
                 $scope.squeezed = true;
                 $scope.newSweet.gesture = CONSTANTS.SQUEEZE;
-                console.log("Squeezed: " + _.pairs($scope.newSweet.gesture));
+              
 
 //                setTimeout(function() {
 //                    $scope.safeApply(function() {
@@ -1066,7 +1052,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         };
 
         $scope.$on('navigate_to_interaction', function () {
-            console.log("---navigate_to_interaction---");
+           
             $scope.safeApply(function () {
                 $scope.sweets = [];
                 $scope.twoWayInteraction();
@@ -1090,10 +1076,10 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $rootScope.listPlaces = [];
 
             sweetService.getUserPlaces($scope.friend.id, function (placeUserSweets) {
-                //console.log("Successfully retrieved placeUserSweets " + placeUserSweets.length + " scores.");
+                
                 $scope.safeApply(function () {
                     $rootScope.listPlaces = placeUserSweets;
-                    //console.log("Successfully retrieved listPlaces " + $rootScope.listPlaces.length + " scores.");
+                   
                 });
             });
 
@@ -1149,13 +1135,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newPlace = [];
             $rootScope.currentPlace = [];
 
-            console.log("-->> Address" + document.getElementById("target").value);
-            console.log("-->>title " + place.title);
-            //console.log("-->>" + place.description);
-            //console.log("-->>" + place.url);
-            //console.log("-->>" + document.getElementById("Latitude").value);
-            //console.log("-->>" + document.getElementById("Longitude").value);
-
+          
             $scope.newPlace.placeName = ((place.name).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase();
             $scope.newPlace.placeTitle = place.title;
             $scope.newPlace.placeSweetName = '';
@@ -1206,7 +1186,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     //$location.path('/place/showPlace');
                 }
                 if (results.length > 0) {
-                    console.log("---->" + results.length);
+                  
 
                     $location.path('/place/createSweetPlace');
                     $scope.setLastVisitedPage();
@@ -1240,27 +1220,19 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $rootScope.currentPlace = [];
             $rootScope.placeSweets = [];
 
-            console.log("placeName -->>" + place.placeName);
-            console.log("placeDesc-->>" + place.placeDesc);
-            console.log("placeSweetName-->>" + place.placeSweetName);
-            console.log("placeURL-->>" + place.placeURL);
-            console.log("placeCreatorId-->>" + place.placeCreatorId);
-            console.log("placeLatitude-->>" + place.placeLatitude);
-            console.log("placeLongitude-->>" + place.placeLongitude);
-            console.log("$scope.friend.id -- >" + $scope.friend.id);
-
+           
             $rootScope.currentPlace = place;
 
 
             sweetService.getPlacesSweets(place.placeName, function (placeSweets) {
-                console.log("Successfully retrieved place sweets " + placeSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.placeSweets = placeSweets;
                 });
             });
 
             sweetService.getPlacestoJoin(place.placeName, $scope.friend.id, function (placeDetailSweets) {
-                console.log("Successfully retrieved join user " + placeDetailSweets.length + " scores.");
+              
                 if (placeDetailSweets.length == 0) {
                     $rootScope.placeJoin = true;
                 } else {
@@ -1269,7 +1241,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             });
             
             sweetService.getPlacesDetail(place.placeName, function (placeDetailSweets) {
-                console.log("Successfully retrieved placeDetailSweets" + placeDetailSweets.length + " scores.");
+              
                 $scope.safeApply(function () {
                     $rootScope.usersInPlaces = placeDetailSweets;
                 });
@@ -1294,14 +1266,13 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             //$location.path('/place/searchPlace');
 
             sweetService.getUserPlaces($scope.friend.id, function (placeUserSweets) {
-                console.log("Successfully retrieved " + placeUserSweets.length + " scores.");
-                $scope.safeApply(function () {
+               
                     $scope.userAddedPlaces = placeUserSweets;
                 });
             });
 
             sweetService.getUserCreatedPlaces($scope.friend.id, function (placeUserSweets) {
-                console.log("Successfully retrieved " + placeUserSweets.length + " scores.");
+                
                 $scope.safeApply(function () {
                     $scope.userPlaces = placeUserSweets;
                 });
@@ -1309,7 +1280,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             //TODO : uncomment this when need join request on myplaces
             *//*sweetService.getUserPlacesJoinReq($scope.friend.id , function(placeUserJoinReqSweets) {
-             console.log("Successfully retrieved " + placeUserJoinReqSweets.length + " scores.");
+            
              $scope.safeApply(function() {
              $scope.userPlacesJoinReq = placeUserJoinReqSweets;
              });
@@ -1320,7 +1291,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.loadPlace = function (cb) {
             $rootScope.places = [];
             sweetService.getPlaces(function (placeSweets) {
-                console.log("Successfully retrieved place" + placeSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.places = placeSweets;
                 });
@@ -1337,19 +1308,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             $scope.setLastVisitedPage();
 
-            console.log("placeName-->>" + place.get("placeName"));
-            //console.log("-->>" + place.get("placeDesc"));
-            console.log("placeSweetName-->>" + place.get("placeSweetName"));
-            //console.log("-->>" + place.get("placeURL"));
-            console.log("placeCreatorId-->>" + place.get("placeCreatorId"));
-            //console.log("-->>" + place.get("placeLatitude"));
-            //console.log("-->>" + place.get("placeLongitude"));
-
-            console.log("-->>" + $scope.friend.id);
-            console.log("-->>" + $scope.friend.name);
-            console.log("-->>" + $scope.friend.network);
-            console.log("-->>" + $scope.friend.picture['data']['url']);
-
+           
             //$scope.addsweetplace.placecid = place.get("objectId") ;
             $scope.addsweetplace.placeCreatorId = place.get("placeCreatorId");
             $scope.addsweetplace.placeName = place.get("placeName");
@@ -1378,18 +1337,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         /*$scope.addPlaceDirect = function (place) {
 
-            console.log("-->>" + place.name);
-            console.log("-->>" + place.description);
-            console.log("-->>" + place.sweetname);
-            console.log("-->>" + place.url);
-            console.log("-->>" + place.placeCreatorId);
-            console.log("-->>" + document.getElementById("Latitude").value);
-            console.log("-->>" + document.getElementById("Longitude").value);
-
-            console.log("-->>" + $scope.friend.id);
-            console.log("-->>" + $scope.friend.name);
-            console.log("-->>" + $scope.friend.network);
-            console.log("-->>" + $scope.friend.picture['data']['url']);
+          
 
             //$scope.addsweetplace.placecid = place.get("objectId") ;
             $scope.addsweetplace.placecreatorid = place.placeCreatorId;
@@ -1413,17 +1361,16 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         /*$scope.myPlace = function () {
 
-            console.log("-->>friend.id" + $scope.friend.id);
+           
 
             sweetService.getUserPlaces($scope.friend.id, function (placeUserSweets) {
-                console.log("Successfully retrieved " + placeUserSweets.length + " scores.");
                 $scope.safeApply(function () {
                     $scope.userPlaces = placeUserSweets;
                 });
             });
 
             sweetService.getUserPlacesJoinReq($scope.friend.id, function (placeUserJoinReqSweets) {
-                console.log("Successfully retrieved " + placeUserJoinReqSweets.length + " scores.");
+             
                 $scope.safeApply(function () {
                     $scope.userPlacesJoinReq = placeUserJoinReqSweets;
                 });
@@ -1451,16 +1398,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             //TODO : need to delete it. this is over head
             $scope.newPlace.placeName = '';
 
-            console.log("placeName -->>" + place.get("placeName"));
-            console.log("placeDesc-->>" + place.get("placeDesc"));
-            console.log("placeSweetName-->>" + place.get("placeSweetName"));
-            console.log("placeURL-->>" + place.get("placeURL"));
-            console.log("placeCreatorId-->>" + place.get("placeCreatorId"));
-            console.log("placeLatitude-->>" + place.get("placeLatitude"));
-            console.log("placeLongitude-->>" + place.get("placeLongitude"));
-            console.log("$scope.friend.id -- >" + $scope.friend.id);
-            console.log("Current User -- >" + userService.currentUser().get("authData")["facebook"]["id"]);
-            console.log("Current User ID -- >" + userService.currentUser().id);
+         
 
             $rootScope.currentPlace = place;
 
@@ -1483,17 +1421,17 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             //$scope.zoomProperty = 4;
 
-            console.log("Successfully ---->" + place.get("placeName"));
+         
 
             sweetService.getPlacesSweets(place.get("placeName"), function (placeSweets) {
-                //console.log("Successfully retrieved place sweets " + placeSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.placeSweets = placeSweets;
                 });
             });
 
             sweetService.getPlacestoJoin(place.get("placeName"), userService.currentUser().get("authData")["facebook"]["id"], function (placeDetailSweets) {
-                console.log("Successfully retrieved join user " + placeDetailSweets.length + " scores.");
+               
                 if (placeDetailSweets.length == 0) {
                     $rootScope.placeJoin = true;
                 } else {
@@ -1502,7 +1440,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             });
 
             sweetService.getPlacesDetail(place.get("placeName"), function (placeDetailSweets) {
-                console.log("Successfully retrieved placeDetailSweets" + placeDetailSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.usersInPlaces = placeDetailSweets;
                     //$location.path('/place/showPlace');
@@ -1510,14 +1448,14 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             });
 
             sweetService.getPlacesFollower(place.get("placeName"), function (placeFollower) {
-                console.log("Successfully retrieved place follower" + placeFollower.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.placeFollower = placeFollower;
                  });
                 for (var i = 0; i < placeFollower.length; i++) {
-                    console.log("--> " + placeFollower[i].get("phone"));
+                   
                     if (placeFollower[i].get("phone") == userService.currentUser().get("authData")["facebook"]["id"]){
-                        console.log("Current User::");
+                       
                         $scope.placeFollow = false;
                         $scope.placeUnFollow = true;
                     }
@@ -1532,14 +1470,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             $scope.usersInPlaces = [];
             $scope.currentPlace = [];
-
-            console.log("-->>" + place.get("placeName"));
-            console.log("-->>" + place.get("placeDesc"));
-            console.log("-->>" + place.get("placeSweetName"));
-            console.log("-->>" + place.get("placeURL"));
-            console.log("-->>" + place.get("placeCreatorId"));
-            console.log("-->>" + place.get("placeLatitude"));
-            console.log("-->>" + place.get("placeLongitude"));
 
             $scope.currentPlace = place;
 
@@ -1563,7 +1493,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.zoomProperty = 14;
 
             sweetService.getPlacesDetail(place.get("placeName"), function (placeDetailSweets) {
-                console.log("Successfully retrieved " + placeDetailSweets.length + " scores.");
+             
                 $scope.safeApply(function () {
                     $scope.usersInPlaces = placeDetailSweets;
                     $location.path('/place/joinPlace');
@@ -1586,15 +1516,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $rootScope.placeJoinReq = [];
             $rootScope.comments = [];
 
-            console.log("placeName -->>" + place.get("placeName"));
-            console.log("placeDesc-->>" + place.get("placeDesc"));
-            console.log("placeSweetName-->>" + place.get("placeSweetName"));
-            console.log("placeURL-->>" + place.get("placeURL"));
-            console.log("placeCreatorId-->>" + place.get("placeCreatorId"));
-            console.log("placeLatitude-->>" + place.get("placeLatitude"));
-            console.log("placeLongitude-->>" + place.get("placeLongitude"));
-            console.log("$scope.friend.id -- >" + $scope.friend.id);
-
             $rootScope.currentPlace = place;
 
             *//*$scope.centerProperty = {
@@ -1613,10 +1534,10 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
              $scope.zoomProperty = 4 ;*//*
 
-            console.log("Successfully ---->" + place.get("placeName"));
+       
 
             *//*sweetService.getPlacesSweets(place.get("placeName") , function(placeSweets) {
-             console.log("Successfully retrieved place sweets " + placeSweets.length + " scores.");
+           
              $scope.safeApply(function() {
              $rootScope.placeSweets = placeSweets;
              });
@@ -1624,7 +1545,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             //Get Place whom current user req to join
             *//*sweetService.getPlacestoJoin(place.get("placeName") ,$scope.friend.id, function(placeDetailSweets) {
-             console.log("Successfully retrieved join user " + placeDetailSweets.length + " scores.");
+             
              if (placeDetailSweets.length == 0){
              $rootScope.placeJoin = true;
              } else {
@@ -1636,18 +1557,18 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $scope.safeApply(function () {
                     $rootScope.comment = placeComments;
                 });
-                console.log("Successfully retrieved place customer comments " + $scope.comment.length + " scores.");
+               
             });
 
             // Get user who request to join Place
             sweetService.placeJoinReq(place.get("placeName"), $scope.friend.id, function (placeReq) {
-                console.log("Successfully retrieved number of join user " + placeReq.length);
+               
                 $rootScope.placeJoinReq = placeReq;
             });
 
             sweetService.getPlacesDetail(place.get("placeName"), function (placeDetailSweets) {
                 $scope.safeApply(function () {
-                    console.log("Successfully retrieved number of user " + placeDetailSweets.length);
+                   
                     $rootScope.usersInPlaces = placeDetailSweets;
                     $location.path('/place/placeProfile');
                 });
@@ -1658,29 +1579,24 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         /*$scope.acceptReq = function (user) {
 
-            console.log("user id ->" + user.get("userID"));
-            console.log("place id ->" + user.get("placeName"));
-
             $scope.updatePlace = [];
             $scope.updatePlace.userID = user.get("userID");
             $scope.updatePlace.placeName = user.get("placeName");
 
             sweetService.updatePlaceUser($scope.updatePlace, function () {
-                console.log("Successfully save.");
+               
                 $scope.myPlaceProfile($rootScope.currentPlace);
             });
         }*/
 
         /*$scope.rejectReq = function (user) {
-            console.log("user id ->" + user.get("userID"));
-            console.log("place id ->" + user.get("placeName"));
-
+          
             $scope.updatePlace = [];
             $scope.updatePlace.userID = user.get("userID");
             $scope.updatePlace.placeName = user.get("placeName");
 
             sweetService.deletePlaceUser($scope.updatePlace, function () {
-                console.log("Successfully save.");
+               
                 $scope.myPlaceProfile($rootScope.currentPlace);
             });
         }*/
@@ -1688,21 +1604,19 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.rejectReqPlace = function (user) {
             $scope.reqReject = [];
             $scope.reqReject = user;
-            console.log("place id ->" + user.get("placeName"));
+          
             $scope.showReqJoin = true;
             $scope.placeComments = true;
         }*/
 
         /*$scope.rejectPlaceProfileUser = function () {
-            console.log("user id ->" + $scope.reqReject.get("userID"));
-            console.log("place id ->" + $scope.reqReject.get("placeName"));
-
+          
             $scope.updatePlace = [];
             $scope.updatePlace.userID = $scope.reqReject.get("userID");
             $scope.updatePlace.placeName = $scope.reqReject.get("placeName");
 
             sweetService.deletePlaceUser($scope.updatePlace, function () {
-                console.log("Successfully save.");
+              
                 $scope.myPlaceProfile($rootScope.currentPlace);
             });
             $scope.showReqJoin = false;
@@ -1717,7 +1631,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }*/
 
         /*$scope.sendPlaceGesture = function (uplace) {
-            console.log("---sendPlaceGesture1 ");
+     
             $scope.setLastVisitedPage();
             $rootScope.sweeter.name = uplace.get('userName');
 
@@ -1725,7 +1639,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.placeInfo = [];
             $scope.placeInfo = uplace;
             $scope.magicButtonImage = uplace.get('userPic');
-            console.log("---setFriend() " + uplace.get('userPic'));
+         
 
             $scope.section.sending = true;
             $scope.showPlaceGestureSendActions = true;
@@ -1753,11 +1667,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newSweet.receiverPicture = $scope.placeInfo.get('userPic');
             $scope.newSweet.gesture = CONSTANTS.GESTURES[0].sub_actions[2];
 
-            console.log($scope.placeInfo.get('userID'));
-            console.log($scope.newSweet.gesture);
-            console.log($scope.newSweet.senderName);
-            console.log("----senderName-------");
-
             $scope.newSweet.text = "Thank You";
             //Sweet related to place
             if (sweetId) $scope.newPlaceSweet.replyToSweet = sweetId;
@@ -1772,11 +1681,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newPlaceSweet.placecreatorid = $scope.placeInfo.get('placeCreatorId');
             $scope.newPlaceSweet.placename = $scope.placeInfo.get('placeName');
             $scope.newPlaceSweet.placesweetname = $scope.placeInfo.get('placeSweetName');
-
-            console.log($scope.newPlaceSweet.placecreatorid);
-            console.log($scope.newPlaceSweet.placename);
-            console.log($scope.newPlaceSweet.gesture);
-            console.log("----Place Sweet-------");
 
             $scope.newPlaceSweet.text = "Thank You";
 
@@ -1839,9 +1743,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
 //            $scope.setGestureType(gestureType);
 
-            console.log($scope.newSweet.receiverName);
-            console.log($scope.newSweet.gesture);
-
+            
             $scope.newSweet.text = "";
 //            $scope.newSweet.template = $scope.newSweet.gesture.template;
             sweetService.saveSweet($scope.newSweet, function (rSweet, rUserSweet) {
@@ -1876,7 +1778,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
             $location.path('/place/createSweetPlace');
 
-            //console.log ("Load Map" + document.getElementById('map_canvas'));
+           
 
             var latlng = new google.maps.LatLng(-34.397, 150.644);
             var geocoder = new google.maps.Geocoder();
@@ -1964,13 +1866,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
              title: place.name,
              position: place.geometry.location
              });
-             //console.log("Place loaction -->>" + i + '->' + place.geometry.location);
-             //console.log("place photos -->>" + i + '->'+ place.photos);
-             console.log("place name -->>" + i + '->'+ place.name);
-             //console.log("place details -->>" + i + '->'+ place.details);
-             //console.log("place icon -->>" + i + '->'+ place.icon);
-             console.log("place formatted address -->>" + i + '->'+ place.formatted_address);
-             //console.log("place html attributions-->>" + i + '->'+ place.html_attributions);
+       
 
              if (i == 0 ) {
              $rootScope.placeSearchResults = [];
@@ -2018,12 +1914,12 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 // If the place has a geometry, then present it on a map.
                 //if (place.geometry.viewport) {
-                //console.log("place.geometry.viewport");
+           
                 //map.fitBounds(place.geometry.viewport);
                 //} else {
                 map.setCenter(place.geometry.location);
                 map.setZoom(17);
-                console.log("LatLong" + place.geometry.location);
+            
                 $rootScope.placeSearchResults = [];
                 $rootScope.placeSearchResults.LatLong = place.geometry.location;
                 $rootScope.placeSearchResults.photo = place.photos;
@@ -2071,7 +1967,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     position:location,
                     map:map
                 });
-                console.log("location" + location);
+               
                 getAddress(location);
                 markersArray.push(marker);
             }*/
@@ -2092,16 +1988,14 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[0]) {
-                                console.log("address :: " + results[0].formatted_address);
-                                console.log("address :: " + results[0].address_components[0].short_name);
-                                console.log("address :: " + results[0].name);
+                               
                             }
                             else {
-                                console.log("No results");
+                              
                             }
                         }
                         else {
-                            console.log("status :: " + status);
+                           
                         }
                     });
             }
@@ -2115,7 +2009,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 var zoom = map.getZoom();
                 map.setZoom(zoom < 14 ? 14 : zoom);
                 //map.setZoom(14);
-                console.log("map.getZoom()" + map.getZoom());
+               
             });
 
             //$location.path('/place/gmap');
@@ -2156,11 +2050,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.follow = function (place){
 
             $scope.followSweet = [];
-            console.log("username -> " + userService.currentUser().get("username"));
-            console.log("id -> " + userService.currentUser().id);
-            console.log("facebook id -> " + userService.currentUser().get("authData")["facebook"]["id"]);
-            console.log("placeName -> " + place.get("placeName"));
-            console.log("placeSweetName -> " + place.get("placeSweetName"));
+          
 
             $scope.followSweet.username = userService.currentUser().get("username");
             $scope.followSweet.userid = userService.currentUser().id ;
@@ -2171,7 +2061,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.followSweet.icon = place.get("icon");
 
             sweetService.savePlaceFollower($scope.followSweet, function () {
-                console.log("savePlaceFollower");
+            
                 $scope.myPlaceDetail(place);
             });
         }*/
@@ -2180,11 +2070,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         /*$scope.unfollow = function (place){
 
             $scope.followSweet = [];
-            console.log("username -> " + userService.currentUser().get("username"));
-            console.log("id -> " + userService.currentUser().id);
-            console.log("facebook id -> " + userService.currentUser().get("authData")["facebook"]["id"]);
-            console.log("placeName -> " + place.get("placeName"));
-            console.log("placeSweetName -> " + place.get("placeSweetName"));
+           
 
             $scope.followSweet.username = userService.currentUser().get("username");
             $scope.followSweet.userid = userService.currentUser().id ;
@@ -2193,14 +2079,14 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.followSweet.placeSweetName = place.get("placeSweetName") ;
 
             sweetService.deletePlaceFollower($scope.followSweet, function () {
-                console.log("deletePlaceFollower");
+            
                 $scope.myPlaceDetail(place);
             });
 
         }*/
 
         /*if (userService.currentUser().get("authData")) {
-            console.log("$$$$$$$$$ " + interactionService.getSweetForInteraction());
+           
             var sweet = interactionService.getSweetForInteraction();
             if (sweet) {
                 $scope.sweetForInteraction(sweet);
@@ -2218,17 +2104,17 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
         //blue
         $scope.setVisibility = function(){
-            console.log("----Set Visibility----");
+           
             $location.path("/kiosk/register_visibility");
         }
 
         $scope.showCalendar = function(){
-            console.log("----Show calendar----");
+           
             $location.path("/kiosk/calendar");
         }
 
         $scope.showDay = function(){
-            console.log("----Show day----");
+            
             $location.path("/kiosk/day");
         }
         
@@ -2236,7 +2122,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         
         //blue
         $scope.kioskRegisterCancel = function(){
-            console.log("----kioskRegisterCancel----");
+          
             userService.logout();
             $scope.clearDataLogin();
             $scope.safeApply(function () {
@@ -2252,16 +2138,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
 
         $scope.kioskRegister = function(){
-            console.log("----kioskRegister----");
-            console.log($rootScope.pageUserFlag);
-
+          
             if ($rootScope.pageUserFlag == true){
-                console.log("----kioskRegister Add user to place----");
-                console.log("full name --> " + $scope.kiosk.fullname);
-                console.log("vocation --> " + $scope.kiosk.vocation);
-                console.log("userAvatar --> " + $rootScope.userAvatar);
-                console.log("userPName --> " + $rootScope.userPName);
-
+               
                 $scope.kioskSetUser = [];
                 $scope.kioskSetUser.fullName = $scope.kiosk.fullname ;
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
@@ -2275,12 +2154,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 }
 
                 /*userService.getUserChannelInfo($rootScope.userPName, function(result){
-                    console.log("result -> " + _.pairs(result[0]));
-                    console.log("userId -> " + result[0].get('userId'));
-                    console.log("fullName -> " + result[0].get('fullName'));
-                    console.log("currentplace " + $rootScope.currentPlace.length);
-                    console.log("currentplace " +  _.pairs($rootScope.currentPlace));
-
+                 
                     //$scope.userInfo = result ;
                     sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
                         userService.logout();
@@ -2291,7 +2165,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 });*/
                 if ($scope.editInfo == true){
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
-                        console.log("result -> " + _.pairs(result[0]));
+                       
                         sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
                             userService.logout();
                             $scope.safeApply(function () {
@@ -2304,13 +2178,13 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     sweetService.uniqueEmailCloud($scope.kioskSetUser.email , function(result) {
                         //if email address is unique return "true"
                         //if email address found return "false" mean email is not unique
-                        console.log("User Unique Email result :: " + result);
+                      
                         if(result == true){
 
                             sweetService.setKioskUser($scope.kioskSetUser, function () {
-                                console.log("User registered, now add to place");
+                               
                                 userService.getUserChannelInfo($rootScope.userPName, function(result){
-                                    console.log("result -> " + _.pairs(result[0]));
+                                   
                                     sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
                                         userService.logout();
                                         $scope.safeApply(function () {
@@ -2333,11 +2207,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 //$rootScope.pageUserFlag = false ;
             } else {
-                console.log("----kioskRegister update user----");
-                console.log("full name --> " + $scope.kiosk.fullname);
-                console.log("vocation --> " + $scope.kiosk.vocation);
-                console.log("userPName --> " + $rootScope.userPName);
-
+              
                 $scope.kioskSetUser = [];
                 $scope.kioskSetUser.fullName = $scope.kiosk.fullname ;
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
@@ -2367,7 +2237,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                         sweetService.uniqueEmailCloud($scope.kioskSetUser.email , function(result) {
                             //if email address is unique return "true"
                             //if email address found return "false" mean email is not unique
-                            console.log("User Unique Email result :: " + result);
+                         
                             if(result == true){
                                 sweetService.setKioskUserCloud($scope.kioskSetUser, function () {
                                     $scope.safeApply(function () {
@@ -2390,19 +2260,12 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.join.code = null;
         }
         $scope.kioskRegisterJoin = function(){
-            console.log("----kiosk Register join----");
-            console.log($rootScope.pageUserFlag);
-            console.log("--> " + $rootScope.currentPlace.placeName);
-
+           
             //if ($rootScope.pageUserFlag == true){
-                console.log("----kioskRegister Add user to place----");
-                console.log("full name --> " + $scope.kiosk.fullname);
-                console.log("vocation --> " + $scope.kiosk.vocation);
-                console.log("userAvatar --> " + $rootScope.userAvatar);
-                console.log("userPName --> " + $rootScope.userPName);
+               
                 
                 if($scope.kiosk.fullname == '' ||$scope.kiosk.email == '' || $scope.kiosk.vocation == '' || $scope.kiosk.fullname == null || $scope.kiosk.email == null || $scope.kiosk.vocation == null){
-                  console.log("JOIN CHECK!");  
+                
                 }
                 else {
                 
@@ -2419,11 +2282,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 }
 
                 /*userService.getUserChannelInfo($rootScope.userPName, function(result){
-                 console.log("result -> " + _.pairs(result[0]));
-                 console.log("userId -> " + result[0].get('userId'));
-                 console.log("fullName -> " + result[0].get('fullName'));
-                 console.log("currentplace " + $rootScope.currentPlace.length);
-                 console.log("currentplace " +  _.pairs($rootScope.currentPlace));
+             
 
                  //$scope.userInfo = result ;
                  sweetService.addKioskUserToPlace(result,$rootScope.currentPlace, function () {
@@ -2434,11 +2293,11 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                  });
                  });*/
                 if ($rootScope.editInfo == true){
-                    console.log("Edit Info true");
+                  
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
-                        console.log("result -> " + _.pairs(result[0]));
+                       
                         sweetService.addKioskUserToPlace2(result,$rootScope.currentPlace, function (result) {
-                            console.log("Check user add to place " + result.id);
+                         
                             userService.logout();
                             $scope.safeApply(function () {
                                 $rootScope.editInfo = false ;
@@ -2450,29 +2309,16 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     sweetService.uniqueEmailCloud($scope.kioskSetUser.email , function(result) {
                         //if email address is unique return "true"
                         //if email address found return "false" mean email is not unique
-                        console.log("User Unique Email result :: " + result);
+                    
                         if(result == true){
-                                console.log("Edit Info false");
+                               
                                 sweetService.setKioskUserCloud($scope.kioskSetUser, function () {
 
 
-                                    console.log("User registered, know add to place");
-                                    //console.log("User registered --> " + result.length);
-                                    //console.log("User registered --> " + result.id);
-                                    console.log("User Phone : " + $rootScope.userPName);
-
-
-                                    console.log("User registered, know add to place");
-                                    console.log("User Phone : " + $rootScope.userPName);
-
                                     userService.getUserChannelInfo($rootScope.userPName, function(result){
-                                        console.log("result -> " + _.pairs(result[0]));
-                                        console.log("fullName:result -> " + result[0].get('fullName'));
-                                        console.log("email:result -> " + result[0].get('email'));
-                                        console.log("avatarURL:result -> " + result[0].get('avatarURL'));
-
+                                       
                                         sweetService.addKioskUserToPlace2(result,$rootScope.currentPlace, function (result) {
-                                            console.log("Check user add to place " + result.id);
+                                           
                                             userService.logout();
                                             $scope.safeApply(function () {
                                                 $rootScope.editInfo = false ;
@@ -2497,13 +2343,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
         
         $scope.kioskRegisterUpdate = function(){
-            console.log("----kioskRegister----");
-
-                console.log("----kioskRegister update user----");
-                console.log("full name --> " + $scope.kiosk.fullname);
-                console.log("vocation --> " + $scope.kiosk.vocation);
-                console.log("userPName --> " + $rootScope.userPName);
-
+           
                 $scope.kioskSetUser = [];
                 $scope.kioskSetUser.fullName = $scope.kiosk.fullname ;
                 $scope.kioskSetUser.vocation = $scope.kiosk.vocation ;
@@ -2514,23 +2354,16 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $rootScope.infoUserChannal.fullNmae = $scope.kiosk.fullname ;
                 $rootScope.infoUserChannal.email = $scope.kiosk.email ;
                 $rootScope.infoUserChannal.vocation = $scope.kiosk.vocation ;
-                console.log("UsedId :: --> " + $rootScope.infoUserChannal.userId) ;
+               
 
                 /*sweetService.setKioskUser($scope.kioskSetUser, function (userInfo) {
                     //$scope.searchPlaceKiosk();
                     $scope.kioskSetUser.userID = userService.currentUser().id ;
 
                     sweetService.updateKioskUserPlaces($scope.kioskSetUser, function (result){
-                        console.log("Update user places");
+                   
                     });
                     sweetService.getCreatedPlaces($rootScope.infoUserChannal.userId, function (placeUserSweets) {
-
-                        console.log("Result Length --> " + placeUserSweets.length);
-                        console.log(" -- > " + _.pairs(placeUserSweets[0])) ;
-                        //console.log("Result ObjectId --> " + placeUserSweets[0].id);
-                        //console.log("Result gname --> " + placeUserSweets[0].get('gname'));
-                        //console.log("Result placeName --> " + placeUserSweets[0].get('placeName'));
-                        console.log("Edit Info --> " + $rootScope.editInfo);
 
                         if(placeUserSweets.length == 0){
                             if($rootScope.editInfo == true ){
@@ -2553,9 +2386,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                             var pname = id.substr(0, id.length - 6);
                             $rootScope.hiddennum = lastSix ;
 
-                            console.log("last six -->" + lastSix);
-                            console.log("remaning -->" + pname);
-
                             $rootScope.placeAvatar = placeUserSweets[0].get('placePhoto');
                             $rootScope.placeSearchResults.placeName = placeUserSweets[0].get('placeName');
                             $rootScope.placeSearchResults.placeSweetName = placeUserSweets[0].get('placeSweetName');
@@ -2565,11 +2395,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                             //$rootScope.placeSearchResults.LatLong = placeUserSweets[0].get('LatLong') ;
                             $rootScope.placeSearchResults.icon = placeUserSweets[0].get('icon');
                             $rootScope.placeSearchResults.formatted_address = placeUserSweets[0].get('address');
-                            
-                                    console.log("Place Name"+ $rootScope.placeSearchResults.placeName);
-                                    console.log("Place Sweet Name"+ $rootScope.placeSearchResults.placeSweetName);
-                                    console.log("Place Photo"+ $rootScope.placeAvatar);
-                                    console.log("Thankyou Title"+ $rootScope.placeSearchResults.kioskthankyoutitle);
                             
                             $scope.previewdisable = true;
                             $rootScope.editInfo = true;
@@ -2583,20 +2408,15 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             sweetService.uniqueEmailEditCloud($scope.kiosk.email ,userService.currentUser().id, function(result) {
                 //if email address is unique return "true"
                 //if email address found return "false" mean email is not unique
-                console.log("unique email :: " + result);
+            
                  if (result == true){
                      sweetService.setKioskUser($scope.kioskSetUser, function (userInfo) {
                          //$scope.searchPlaceKiosk();
-                         console.log("current user --> " + userService.currentUser());
-                         console.log("current user ID --> " + userService.currentUser().id);
-                         console.log("full name --> " + $scope.kiosk.fullname);
-                         console.log("vocation --> " + $scope.kiosk.vocation);
-                         console.log("userPName --> " + $rootScope.userPName);
-
+                        
                          $scope.kioskSetUser.userID = userService.currentUser().id ;
 
                          sweetService.updateKioskUserPlaces($scope.kioskSetUser, function (result){
-                             console.log("Update user plaes");
+                          
                          });
 
 
@@ -2605,13 +2425,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                              if(placeUserSweets.length > 0){
 
-                                 console.log("Result Length --> " + placeUserSweets.length);
-                                 console.log(" -- > " + _.pairs(placeUserSweets[0])) ;
-                                 console.log("Result ObjectId --> " + placeUserSweets[0].id);
-                                 console.log("Result gname --> " + placeUserSweets[0].get('gname'));
-                                 console.log("Result placeName --> " + placeUserSweets[0].get('placeName'));
-                                 console.log("Edit Info --> " + $rootScope.editInfo);
-
+                       
                                  $rootScope.newplaceid = placeUserSweets[0].id;
 
                                  var id = placeUserSweets[0].get('placeName') ;
@@ -2619,9 +2433,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                                  var pname = id.substr(0, id.length - 6);
                                  $rootScope.hiddennum = lastSix ;
 
-                                 console.log("last six -->" + lastSix);
-                                 console.log("remaning -->" + pname);
-                                 
                                  $rootScope.placeAvatar = placeUserSweets[0].get('placePhoto');
                                  $rootScope.placeSearchResults.placePhoto = placeUserSweets[0].get('placePhoto');
                                  $rootScope.placeSearchResults.placeName = placeUserSweets[0].get('placeName');
@@ -2656,8 +2467,8 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
 
         $scope.showSearchKiosk = function () {
-            /*console.log("-->>search");
-             $scope.setMe();
+            
+             /*$scope.setMe();
              $scope.$parent.setLastVisitedPage();*/
             $scope.loadPlace();
             $location.path('/kiosk/search');
@@ -2754,20 +2565,13 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 // If the place has a geometry, then present it on a map.
                 //if (place.geometry.viewport) {
-                //console.log("place.geometry.viewport");
+               
                 //map.fitBounds(place.geometry.viewport);
                 //} else {
                 map.setCenter(place.geometry.location);
                 map.setZoom(12);
 
-                console.log("LatLong" + place.geometry.location);
-                //console.log(" -->" + _.pairs(place.photos[0]));
-                console.log(" -->" + place.reference);
-                console.log(" -->" + place.rating);
-                console.log(" -->" + place.name);
-                console.log(" -->" + place.icon);
-                console.log(" -->" + place.formatted_address);
-                console.log(" -->");
+              
 
                 $rootScope.placeSearchResults.LatLong = place.geometry.location;
                 //$rootScope.placeSearchResults.photo = place.photos;
@@ -2776,7 +2580,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 $rootScope.placeSearchResults.icon = place.icon;
                 $rootScope.placeSearchResults.formatted_address = place.formatted_address;
                 $rootScope.placeSearchResults.kioskthankyoutitle = "Love your barista? Say thank you!" ;
-                console.log("placeSearchResults -->" + $rootScope.placeSearchResults.gname);
+               
 
                 $scope.placeClaim($rootScope.placeSearchResults);
 
@@ -2872,19 +2676,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 var bounds = new google.maps.LatLngBounds();
                 for (var i = 0, place; place = places[i]; i++) {
 
-                    console.log("LatLong" + places[i].geometry.location);
-                    console.log("reference -->" + places[i].reference);
-                    console.log("rating -->" + places[i].rating);
-                    console.log("name -->" + places[i].name);
-                    console.log("icon -->" + places[i].icon);
-                    console.log("formatted_address -->" + places[i].formatted_address);
-                    console.log("address -->" + places[i].address);
-                    console.log("id -->" + places[i].id);
-                    console.log("vicinity -->" + places[i].vicinity );
-                    console.log("long_name -->" + places[i].long_name );
-
-                    console.log(" -->");
-
+                
                     var image = {
                         url: place.icon,
                         size: new google.maps.Size(71, 71),
@@ -2905,8 +2697,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     markers.push(marker);
                     //var data = "Place Name: " + place.name + " \n " + place.formatted_address + "\n " + place.id;
                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                        console.log("marker position " + marker.getPosition());
-                        return function() {
+                    
                             infowindow.setContent(marker.title + "\n" + marker.address + "\n" + marker.getPosition());
                             infowindow.open(map, marker);
                         }
@@ -2915,27 +2706,21 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     google.maps.event.addListener(marker, 'dblclick', (function(marker, i) {
 
                         return function() {
-                            console.log("marker position " + marker.getPosition());
-                            console.log("marker address " + marker.address);
-                            console.log("marker title/name " + marker.title);
-                            console.log("marker icon " + marker.icon);
-
+                         
                             $rootScope.placeSearchResults.LatLong = marker.getPosition();
                             //$rootScope.placeSearchResults.photo = place.photos;
                             $rootScope.placeSearchResults.gname = marker.title;
                             $rootScope.placeSearchResults.icon = marker.icon;
                             $rootScope.placeSearchResults.formatted_address = marker.address;
                             $rootScope.placeSearchResults.kioskthankyoutitle = "Love your barista?say thank you!" ;
-                            console.log("placeSearchResults -->" + $rootScope.placeSearchResults.gname);
+                         
 
                             $scope.placeClaim($rootScope.placeSearchResults);
                         }
                     })(marker, i));
 
                     if(place.formatted_address == document.getElementById('target').value){
-                        console.log("In bound");
-                        console.log(document.getElementById('target').value);
-
+                      
                         infowindow.open(map,marker);
                     }
                     bounds.extend(place.geometry.location);
@@ -2961,7 +2746,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                     position:location,
                     map:map
                 });
-                console.log("location" + location);
+             
                 getAddress(location);
                 markersArray.push(marker);
             }*/
@@ -2985,7 +2770,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 var zoom = map.getZoom();
                 map.setZoom(zoom < 17 ? 17 : zoom);
                 //map.setZoom(14);
-                console.log("map.getZoom()" + map.getZoom());
+              
             });
 
             google.maps.event.trigger(map, 'resize');
@@ -3025,12 +2810,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.placeMsg = false ;
             $scope.showClaim = true ;
 
-            console.log("placeSearchResults -->" + $rootScope.placeSearchResults.gname);
-            console.log(" -->" + $rootScope.placeSearchResults.gname);
-            console.log(" -->" + $rootScope.placeSearchResults.icon);
-            console.log(" -->" + $rootScope.placeSearchResults.formatted_address);
-            console.log(" -->" );
-
             $scope.$apply();
         }
 
@@ -3053,14 +2832,6 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.previewdisable = true;
             $scope.newPlace = [];
             $rootScope.currentPlace = [];
-
-            //console.log("name -->>  " + kiosk.name);
-            //console.log("title -->> " + kiosk.title);
-            //console.log("-->> " + kiosk.address);
-            //console.log("-->> " + kiosk.address2);
-            //console.log("-->> " + document.getElementById("target").value + ' __ ' + kiosk.address);
-            //console.log("-->> " + document.getElementById("address2").value + ' __ ' + kiosk.address2);
-            console.log("$rootScope.placeSearchResults.kioskthankyoutitle-->> " + $rootScope.placeSearchResults.kioskthankyoutitle);
 
             //$scope.newPlace.placeName = kiosk.name;
             $scope.newPlace.placeTitle = $rootScope.placeSearchResults.kioskthankyoutitle;
@@ -3090,10 +2861,9 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.newPlace.formatted_address = $rootScope.placeSearchResults.formatted_address;
 
             sweetService.saveSweetPlaceParse($scope.newPlace, function (results) {
-                console.log("save claim Place in Parse");
-                console.log("results --> " + results.id);
+   
                 $rootScope.newplaceid = results.id ;
-                console.log("$rootScope.newplaceid --> " + $rootScope.newplaceid);
+            
                 //------------use this in place info in launch place------------------------//
                 $rootScope.newplaceInfoLaunch = results ;
                 //------
@@ -3106,9 +2876,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
 
                 if (results.length > 0) {
                     $scope.placeMsg = true ;
-                    console.log("place search :--> " + _.pairs(results));
-                    console.log("place search :--> " + results[0].get('gname'));
-                    console.log("place search :--> " + results[0].get('placeName'));
+                  
                     $rootScope.placeClaimLunch = results[0].get('placeName') ;
                     $scope.$apply();
                 }
@@ -3136,11 +2904,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $rootScope.placeSearchResults.placeSweetName = $scope.kiosk.editableTitle;
             //$rootScope.placeSearchResults.gname = $scope.kiosk.editableTitle;
             $rootScope.placeSearchResults.formatted_address = $scope.kiosk.editableAddress;
-            console.log("--> " + $scope.gname );
-            console.log("--> " + $scope.address);
-
-            console.log("Edit--> " + $scope.kiosk.editableTitle);
-            console.log("Edit--> " + $scope.kiosk.editableAddress);
+ 
             sweetService.saveKioskPlaceEdit($rootScope.placeSearchResults,$rootScope.hiddennum,$rootScope.newplaceid, function (results) {
 
             });
@@ -3156,11 +2920,11 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             $scope.editorEnabledTitle = false;
         };
         $scope.saveEditKioskThankyou = function() {
-            console.log("Edit --> " + $scope.kiosk.editablethankyouTitle );
+          
 
             $scope.safeApply(function () {
                 $rootScope.placeSearchResults.kioskthankyoutitle = $scope.kiosk.editablethankyouTitle;
-                console.log("--> " + $rootScope.placeSearchResults.kioskthankyoutitle );
+              
             });
 
             sweetService.saveKioskPlaceEdit2($rootScope.placeSearchResults.kioskthankyoutitle,$rootScope.newplaceid, function (results) {
@@ -3179,8 +2943,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
         
         $scope.clearDataLogin = function () {
-             console.log("clearDataLogin()");
-             console.log($scope.user.phone);
+      
              $scope.user.phone=null;
         };
         
@@ -3189,34 +2952,22 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
             
             //Add user to newly created place
             //////////////////////////////////
-            /*console.log("User PhoneNumber/UserName :: " + $rootScope.userPName);
-            console.log("::--> " + $rootScope.newplaceInfoLaunch);
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("placeName"));
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("gname"));
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("placeCreatorId"));
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("address"));
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("icon"));
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("placePhoto"));
-            console.log("::--> " + $rootScope.newplaceInfoLaunch.get("LatLong"));
-            console.log("Edit Place Name :: " + $rootScope.placeSearchResults.gname);
-            console.log("Edit Place Address :: " + $rootScope.placeSearchResults.formatted_address);
+           
 
-            $rootScope.newplaceInfoLaunch.placeName = $rootScope.placeSearchResults.gname ;
+            /*$rootScope.newplaceInfoLaunch.placeName = $rootScope.placeSearchResults.gname ;
             $rootScope.newplaceInfoLaunch.address = $rootScope.placeSearchResults.formatted_address ;*/
             
             
             if ($rootScope.editInfo == true){
                 sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
-                    console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
+                   
                     $rootScope.newplaceInfoLaunch = placeInfo;
                     //$rootScope.currentPlace = placeInfo;
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
-                        console.log("result -> " + _.pairs(result[0]));
-                        console.log("PNAME: " + $rootScope.userPName);
-                        console.log("PLACENAME: " + $rootScope.newplaceInfoLaunch[0].get("placeName"));
+                       
                         authService.chkPlaceUser($rootScope.userPName, $rootScope.newplaceInfoLaunch[0].get("placeName"), function (chkflag) {
                             if (chkflag == true){
-                                console.log("Already a user of place --> ");
+                               
                                 $scope.safeApply(function () {
                                     
                                     $scope.logoutKiosk();
@@ -3237,11 +2988,11 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
                 });
             } else {
                 sweetService.getPlacesInfo(((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase()) + $rootScope.hiddennum, function (placeInfo) {
-                    console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
+                  
                     $rootScope.newplaceInfoLaunch = placeInfo;
                     //$rootScope.currentPlace = placeInfo;
                     userService.getUserChannelInfo($rootScope.userPName, function(result){
-                        console.log("result -> " + _.pairs(result[0]));
+                    
                         sweetService.addKioskUserToPlace(result,$rootScope.newplaceInfoLaunch, function () {
                             $scope.logoutKiosk();
                             /*$scope.safeApply(function () {
@@ -3266,9 +3017,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
         
         $scope.launchKioskClaim = function(){
-            console.log("-- Logout kiosk from claim --");
-            console.log("--> " + $rootScope.placeClaimLunch);
-
+          
             userService.logout();
             $scope.safeApply(function () {
                 //$location.path((($rootScope.placeSearchResults.gname).replace(/[\s\$\&\!\. ,:-]+/g, "")).toLowerCase());
@@ -3277,8 +3026,7 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
         
         $scope.previewKiosk = function(){
-            console.log("-- Preview Kiosk -- ");
-            console.log("--> " + $rootScope.placeSearchResults);
+     
             if ($scope.editorEnabled == true){
                 $scope.saveEditKiosk();
             }
@@ -3287,23 +3035,21 @@ function SweetCtrl($window, UpdateService, $log, $scope, sweetService, interacti
         }
         
         $scope.previewBack = function(){
-            console.log("-- Preview Kiosk Back-- ");
-            console.log("--> " + $rootScope.placeSearchResults);
+           
             $scope.previewdisable = true;
             $rootScope.editInfo = true;
             $scope.launch = false ;
         }
         
         $scope.logoutKiosk = function () {
-            console.log("-- Logout kiosk --");
-            console.log("--> " + $rootScope.placeSearchResults.gname);
+           
            // var address = ($rootScope.placeSearchResults.gname).replace(" ", "");
-            console.log('Hidden Num ----> ' + $rootScope.hiddennum);
+           
             userService.logout();
             $scope.safeApply(function () {
                 $rootScope.editInfo = false ;
                 //$rootScope.enurl = encodeURIComponent($rootScope.placeSearchResults.gname);
-                //console.log("Encoded URL: " + $rootScope.enurl);
+               
                 $scope.section.loginInProgress_launch = false;
                 $location.path((($rootScope.placeSearchResults.gname).replace(/[0-9\s\$\&\!\. ,'`:-]+/g, "")).toLowerCase() + $rootScope.hiddennum);
                 //$location.path($rootScope.placeSearchResults.gname);
@@ -3358,12 +3104,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     $scope.pageSize = 8 ;
 
     $scope.nextPage = function () {
-        //console.log("nextPage: " + $scope.currentPagePlace * $scope.pageSize);
-        //console.log("Page total size: " + $rootScope.usersInPlaces.length);
+       
         if ((( ($scope.currentPagePlace + 1) * $scope.pageSize) < $rootScope.usersInPlaces.length ) && $scope.pageSize != $rootScope.usersInPlaces.length) {
             $scope.currentPagePlace++;
         }
-        console.log("current Page -->" + $scope.currentPagePlace);
+       
     };
 
     //alpha
@@ -3371,12 +3116,12 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         if ($scope.currentPagePlace > 0) {
             $scope.currentPagePlace--;
         }
-        console.log("previous Page -->" + $scope.currentPagePlace);
+     
     };
 
     //blue
     $scope.sendPlaceGesture = function (uplace) {
-        console.log("---sendPlaceGesture2 ");
+      
         
         /*if ($rootScope.visitorAvatar == false ||$rootScope.visitorAvatar == '' || $rootScope.visitorAvatar == 'null' ){
             $rootScope.visitorAvatar = 'images/capture-img.png';
@@ -3397,9 +3142,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         //$scope.magicButtonImage = "http://graph.facebook.com/" + uplace.get('userID') + "/picture?width=300&height=300";//uplace.get('userPic');
         $scope.magicButtonImage = "http://fast-bayou-8907.herokuapp.com/convert?resize=300x300&source=" + uplace.get('userPic') ;
         $scope.userName = uplace.get('userName');
-        console.log("-- >> " + uplace.get('userName').split(" ")[0]);
-        console.log("---setFriend() " + uplace.get('userPic'));
-
+       
         $scope.section.sending = true;
         $scope.showPlaceGestureSendActionsPlace = true;
         //$location.path("/partials/sent");
@@ -3429,10 +3172,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     //blue
     $scope.onTimeoutPage = function(){
-        console.log("counterPage --> " + $scope.counterPage);
-
+    
         if ($scope.counterPage == 'gotofeedback') {
-            console.log("counter --> " + 'feedback');
+          
             //$scope.counterPage = 'end';
 
         } else if ($scope.counterPage == 30 ){
@@ -3466,7 +3208,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         $scope.wrapper = "wrapper";
         $scope.showprogressline = ' ';
 
-        console.log("userID" + placeInfo.get("userID"));
+      
         //if(sweetId) $scope.newSweet.replyToSweet = sweetId;
         $scope.newSweet.receiverPhone = placeInfo.get("userID");
         $scope.newSweet.receiverName = placeInfo.get("userName");
@@ -3489,10 +3231,6 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         } else {
             $scope.newSweet.gesture = CONSTANTS.GESTURES[0].sub_actions[2];
         }
-
-        console.log($scope.newSweet.receiverName);
-        console.log($scope.newSweet.gesture);
-        //console.log(userService.currentUser());
 
         $scope.newSweet.text = "Thank You, all of you";
 
@@ -3518,12 +3256,12 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
 
         sweetService.saveSweetofPlace($scope.newSweet, function (rSweet) {
-            console.log("saveSweetofPlace id" + rSweet );
+         
             $rootScope.sweetofplaceid = rSweet ;
         });
 
         /*sweetService.getPlacesSweets(placeInfo.get("placeName"), function (placeSweets) {
-            console.log("Successfully retrieved place sweets custom" + placeSweets.length + " scores.");
+    
             $scope.safeApply(function () {
                 $rootScope.placeSweets = placeSweets;
             });
@@ -3544,7 +3282,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         $("#" + $scope.heart).css('display', 'none');
         $("#" + placeInfo.get("userID")).css('display', 'block');
         $scope.heart =  placeInfo.get("userID") ;
-        console.log("---heart " + $scope.heart);
+       
         //$scope.counter = CONSTANTS.DEFAULT_COUNTER;
         //$timeout($scope.onTimeout,1000); //show the timer
 
@@ -3579,11 +3317,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     $scope.onTimeout = function(){
 
         if ($scope.counter == 'feedback') {
-            console.log("counter --> " + 'feedback');
+           
             $scope.counter = 'end';
 
         } else if ($scope.counter == 6) {
-            console.log("counter --> " + '6');
+           
             $scope.newValue = 100 ;
 
             $scope.roundProgressData = {
@@ -3611,13 +3349,13 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
 
         } else if ($scope.counter <= 6) {
-            console.log("counter --> " + $scope.counter);
+           
             $scope.counter++;
             var mytimeout = $timeout($scope.onTimeout,1000);
 
             if( $scope.counter % 1 == 0 ) {
 
-                console.log("increment --> " + increment);
+               
                 increment = increment + 16.667;
                 $scope.newValue = increment ;
 
@@ -3635,7 +3373,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
         $scope.waitcounter++;
         if ($scope.waitcounter == 2) {
-            console.log("waitcounter --> ");
+         
             $scope.showmobileActions = false;
             $scope.showPlaceFeed = true ;
             $scope.section.sendingPlace = true;
@@ -3718,8 +3456,8 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         }
       
         sweetService.placesCustomerComm($scope.newSweet, function () {
-            /*console.log("Successfully retrieved place sweets custom" + placeSweets.length + " scores.");
-            $scope.safeApply(function () {
+           
+            /*$scope.safeApply(function () {
                 $rootScope.placeSweets = placeSweets;
             });*/
         });
@@ -3740,8 +3478,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 //            $scope.newSweet.mobile = '' ;
 //        }
 
-        console.log("User Email add --> " + rEmail);
- 	console.log("bccEmail --> " + bccEmail);
+      
 
         $scope.newSweet.owneremail = $rootScope.owneremail;
         $scope.newSweet.emailFname = userFname.split(" ")[0];
@@ -3752,20 +3489,20 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
         // if user not giving any comment. No email send
         if ($scope.user.comment == '' || $scope.user.comment == null || emoticons == ''){
-            console.log("No comment enter");
+           
         }else {
             sweetService.sendCommentEmail($scope.newSweet, function (success) {
-                console.log("Email send -->" + success);
+               
             });
 
             //send email
             //send email to user as well
             if( $scope.isValidEmailAddress( $scope.newSweet.mobile ) ){
-                console.log("Send email to user...");
+             
                 $scope.newSweet.subject = "Thanks for your message";
 
                 sweetService.sendEmailToUser($scope.newSweet, function (success) {
-                    console.log("Email send -->" + success);
+                 
                 });
             }
         }
@@ -3802,7 +3539,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     };
 
     $scope.newAuthPlaceCancel = function () {
-        console.log("call of cancel");
+       
         
         //$scope.wrapper = "wrapper-feeds-place";
 
@@ -3843,7 +3580,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     $scope.feedback = function () {
 
-        console.log("feedback");
+       
         $scope.feedbackform = true;
 
         $scope.counter = 'feedback';
@@ -3860,27 +3597,27 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     /*call from sweetfileselect directive */
     /************************************************************/
     $scope.$on('feedbackImg_upload', function() {
-        console.log("feedbackImg_upload");
+      
 
         $scope.counter = 'feedback';
         $timeout($scope.onTimeout,1000); //show the timer
     });
     $scope.$on('feedbackImg_progress', function() {
-        console.log("feedbackImg_progress");
+       
         $rootScope.loginInProgress_place = true;
 
         
     });
     
     $scope.$on('feedbackImg_profile', function() {
-        console.log("feedbackImg_profile");
+      
         $rootScope.loginInProgress_profile = false;
 
         
     });
 
     $scope.$on('feedbackImg_uploaded', function() {
-        console.log("feedbackImg_uploaded");
+       
         $scope.showprogressline = 'strip-line';
 
         $scope.roundProgressData = {
@@ -3905,11 +3642,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     /*                      Timer Handler                                   */
     /************************************************************************/
 
-    console.log('TimerHandlerCtrl');
+  
     $rootScope.$on('timer_initialized', function() {
         timer = angular.element('.timer').scope();
         addEvents();
-        console.log('TimerHandlerCtrl');
+      
     });
 
     /*addEvents = function() {
@@ -3958,7 +3695,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         $scope.loggedInUser = userService.currentUser();
         var userLoggedIn = $scope.loggedInUser ? true : false;
 
-        console.log("---ApplicationCtrl: loggedInUser: " + $scope.loggedInUser + ":" + userLoggedIn);
+      
 
         $scope.isUserLoggedIn = userLoggedIn;
 
@@ -3973,24 +3710,17 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             $scope.cssResponsive = 'css/responsive.css' ;
             $scope.cssSweet = 'css/sweet.css' ;
             $scope.cssStyle = '' ;
-            console.log("cssResponsive " + $scope.cssResponsive);
-            console.log("cssSweet " + $scope.cssSweet);
-            console.log("cssStyle" + $scope.cssStyle);
+        
         } else {
             $scope.cssResponsive = '' ;
             $scope.cssSweet = '' ;
             $scope.cssStyle = 'css/blue/css/purple.css' ;
-            console.log("cssResponsive " + $scope.cssResponsive);
-            console.log("cssSweet " + $scope.cssSweet);
-            console.log("cssStyle " + $scope.cssStyle);
+        
         }
-
-//        console.log("Parse/"+CONSTANTS.PARSE_API_ID+"/currentUser");
-//        var lsCurrentUser = JSON.parse(localStorage.getItem("Parse/"+CONSTANTS.PARSE_API_ID+"/currentUser"));
-//        console.log("---localStorage lsCurrentUser--- "+lsCurrentUser);
+   
+//        var lsCurrentUser = JSON.parse(localStorage.getItem("Parse/"+CONSTANTS.PARSE_API_ID+"/currentUser")); 
 //        lsCurrentUser.authData.facebook.access_token = "haha";
-//        console.log("---localStorage2--- "+ _.pairs(lsCurrentUser.authData.facebook));
-//        localStorage.setItem("test",JSON.stringify(lsCurrentUser));
+
 
 
     };
@@ -4062,7 +3792,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     };*/
 
     /*$scope.showSearch = function () {
-        *//*console.log("-->>search");
+       
          $scope.setMe();
          $scope.$parent.setLastVisitedPage();*//*
         $scope.loadPlace();
@@ -4073,7 +3803,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     $scope.loadPlace = function (cb) {
         $scope.places = [];
         sweetService.getPlaces(function (placeSweets) {
-            console.log("Successfully retrieved " + placeSweets.length + " scores.");
+           
             $scope.safeApply(function () {
                 $scope.places = placeSweets;
             });
@@ -4102,9 +3832,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     //$rootScope.defaultError = CONSTANTS.ERROR.DEFAULT;
 
     $rootScope.loadUserChannel = function () {
-        //console.log("Loading user channel "+userService.currentUser().id);
+        
         userService.loadUserChannel(userService.currentUser().id, function (rUserChannel) {
-            //console.log("--- loadUserChannel --- "+rUserChannel);
+           
             $scope.safeApply(function () {
                 $rootScope.userChannel = rUserChannel;
                 $rootScope.sweeter.name = $rootScope.userChannel.get("fullName"); //comment by kashif undo this change
@@ -4127,8 +3857,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 //
 //    $rootScope.sweetPersonMe = function(sweet) {
 //        if(sweet) {
-//    //        console.log(sweet.get("senderPhone"), sweet.get("receiverPhone"));
-//    //        console.log(sweet);
+
 //            if(sweet.get("receiverPhone") == sweet.get('senderPhone'))
 //                return "yourself";
 //            else if(sweet.get("receiverPhone") == userService.currentUser().get("username"))
@@ -4162,7 +3891,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     };
 
     $scope.setuseravatar = function (avatar) {
-        //console.log("---setUserAvatar called---");
+      
         $rootScope.userChannel.set("avatarURL", avatar);
         $rootScope.userAvatar = $rootScope.userChannel.get("avatarURL");
         $rootScope.loadUserChannel();
@@ -4185,14 +3914,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     };
 
     $scope.clearDataLogin = function () {
-             console.log("clearDataLogin()");
-             console.log($scope.user.phone);
+          
              $scope.user.phone=null;
         };
     // Update the rendering of the page logout state.
      var renderNotLogoIn = function () {
-
-        console.log("---Rendering Logout---");
 
         $scope.no_bg = "no-bg-color";
         $scope.cssResponsive = '' ;
@@ -4207,11 +3933,6 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             renderPath = renderAction.split(".");
         else
             renderPath = "";
-
-        console.log("Current Route: " + $location.path());
-        console.log("Render Action: " + renderAction);
-        console.log("Render Path0: " + renderPath[0]);
-        console.log("Render Path1: " + renderPath[1]);
 
         //alpha
         //Non user + logout state + this device + public pages for place and users >
@@ -4286,33 +4007,31 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         }
 
         if ( $routeParams.name != null && $routeParams.name != ''){
-            console.log("Rendering Step1 --->");
-            console.log("$routeParams username-->" + username);
+   
             var username = ($routeParams.name);
         } else {
-            console.log("Rendering Step1 else--->");
-            console.log("$routeParams username -->" + username);
+       
             var username = "";
 
         }
 
         if(renderPath[1] == 'custom' && username != "" ){
-            console.log("Rendering Step2 --->");
+     
             $rootScope.publicName = username;
-            console.log("render username Guest-->" + $scope.publicName);
+    
         }
         if (username == "[object Object]"){
-            console.log("Rendering Step3 --->");
+           
             $rootScope.publicName = '';
         }
 
         if($rootScope.publicName != '' && !$scope.isUserLoggedIn && $rootScope.publicName != 'u') {
 
-            console.log("Rendering Step4 --->");
+       
             $scope.isPublicPage = true;
             $scope.showLogin = false;
 
-            //console.log("sweetname Guest--> " + $rootScope.publicName);
+       
             //$scope.$apply( $location.path( '/'+ $rootScope.publicName ) );
 
             $scope.showPlaceFeed = true ;
@@ -4323,8 +4042,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         // Non user + logout state + this device >
         //alpha
         if ($location.path() == '/' || $location.path() == '/u/auth' && !$scope.isUserLoggedIn) {
-            console.log("Rendering Step5 --->");
-            console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+         
             $scope.showLogin = true;
             $location.path(CONSTANTS.ROUTES.AUTH);
         }
@@ -4336,39 +4054,35 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         }
         
         if ($location.path() == '/u/auth/join' && !$scope.isUserLoggedIn) {
-            console.log("Rendering Step6 join --->");
-            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+          
             $location.path(CONSTANTS.ROUTES.AUTH_JOIN);
         }
         
         if ($location.path() == '/u/auth/launch' && !$scope.isUserLoggedIn) {
-            console.log("Rendering Step6 --->");
-            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+            
             $location.path('/u/auth/launch');
         }
 
         if ($location.path() == '/u/auth/loginpage' && !$scope.isUserLoggedIn) {
-            console.log("Rendering Step6 --->");
-            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+           
             $location.path('/u/auth/loginpage');
         }
 
         // Non user + logout state + this device >
         if ($location.path() == '/' && !$scope.isUserLoggedIn) {
-            console.log("Rendering Step7 --->");
+           
             $location.path(CONSTANTS.ROUTES.AUTH);
             $scope.showLogin = true;
         }
 
         if (isAuth && renderPath[1] == 'sms') {
-            console.log("Rendering Step8 --->");
-            console.log("isAuth and sms get");
+        
             $scope.showLogin = true;
             $location.path(CONSTANTS.ROUTES.AUTH_SMS);
         }
 
         if (renderPath[1] == "custom" && $rootScope.publicName != '') {
-            console.log("Rendering Step9 --->");
+           
             $scope.showPlaceFeed = true ;
             $rootScope.currentPlace = [];
 
@@ -4382,18 +4096,18 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             $scope.guestPlace = {};
             //$scope.guestPlace.placeName = username;
 
-            console.log("sweetname custom--> " + username);
+         
             $rootScope.placeKiosk = username ;
 
             /*sweetService.getPlacesSweets(username, function (placeSweets) {
-             console.log("Successfully retrieved place sweets custom" + placeSweets.length + " scores.");
+           
              $scope.safeApply(function () {
              $rootScope.placeSweets = placeSweets;
              });
              });*/
 
             sweetService.getPlacesInfo(username, function (placeInfo) {
-                console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
+
 
                 $scope.safeApply(function () {
                     $rootScope.currentPlace = placeInfo;
@@ -4409,7 +4123,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             });
 
             /*sweetService.getPlacestoJoin(username ,$scope.friend.id, function(placeDetailSweets) {
-             console.log("Successfully retrieved join user " + placeDetailSweets.length + " scores.");
+          
              if (placeDetailSweets.length == 0){
              $rootScope.placeJoin = true;
              } else {
@@ -4418,7 +4132,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
              });*/
 
             sweetService.getPlacesDetail(username, function (placeDetailSweets) {
-                console.log("Successfully retrieved place users custom" + placeDetailSweets.length + " scores.");
+              
                 $scope.safeApply(function () {
                     $rootScope.usersInPlaces = placeDetailSweets;
                     if(placeDetailSweets.length == 0){
@@ -4438,7 +4152,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
     // Update the rendering of the page.
     var render = function () {
-        console.log("---Rendering---");
+      
         $scope.no_bg = "no-bg-color";
 
         $scope.safeApply(function () {
@@ -4458,16 +4172,12 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             //$scope.cssResponsive = 'css/responsive.css' ;
             $scope.cssSweet = 'css/sweet.css' ;
             $scope.cssStyle = '' ;
-            //console.log("cssResponsive " + $scope.cssResponsive);
-            console.log("cssSweet " + $scope.cssSweet);
-            console.log("cssStyle" + $scope.cssStyle);
+          
         } else {
             $scope.cssResponsive = '' ;
             $scope.cssSweet = '' ;
             $scope.cssStyle = 'css/blue/css/purple.css' ;
-            console.log("cssResponsive " + $scope.cssResponsive);
-            console.log("cssSweet " + $scope.cssSweet);
-            console.log("cssStyle " + $scope.cssStyle);
+       
         }
 
         //alpha
@@ -4479,7 +4189,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         //alpha
         /*if(renderGuestPath[1] == 'custom' && username != "" ){
             $rootScope.publicName = username;
-            //console.log("render username Guest-->" + $scope.publicName);
+            
         }
         if (username == "[object Object]"){
             $rootScope.publicName = '';
@@ -4488,11 +4198,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         //alpha
         /*if($rootScope.publicName != '' && !$scope.isUserLoggedIn ) {
 
-            //console.log("Rendering Step1 --->");
+           
             $scope.isPublicPage = true;
             $scope.showLogin = false;
 
-            //console.log("sweetname Guest--> " + $rootScope.publicName);
+           
             //$scope.$apply( $location.path( '/'+ $rootScope.publicName ) );
 
             $scope.showPlaceFeed = true ;
@@ -4503,22 +4213,21 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         // Non user + logout state + this device >
         //alpha
         /*if ($location.path() == '/' || $location.path() == '/u/auth' && !$scope.isUserLoggedIn) {
-            //console.log("Rendering Step2 --->");
-            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+        
             $location.path(CONSTANTS.ROUTES.AUTH);
             $scope.showLogin = true;
         }*/
 
         // Non user + logout state + this device >
         /*if ($location.path() == '/' && !$scope.isUserLoggedIn) {
-            //console.log("constant auth: " + CONSTANTS.ROUTES.AUTH);
+       
             $location.path(CONSTANTS.ROUTES.AUTH);
             $scope.showLogin = true;
         }*/
 
         //Existing user + logged in + this devise >
         if ($location.path() == '/' && $scope.isUserLoggedIn) {
-            console.log("/ and logged in");
+          
             $location.path(CONSTANTS.ROUTES.KIOSK_USERPROFILE);
         }
 
@@ -4530,9 +4239,6 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             renderPath = renderAction.split(".");
         else
             renderPath = "";
-
-        console.log("renderPath[ 0 ] --> " + renderPath[ 0 ]);
-        console.log("renderPath[ 1 ] --> " + renderPath[ 1 ]);
 
         var isAuth = (renderPath[ 0 ] == "auth");
         var isAuthLink = (renderPath[ 0 ] == "authlink");
@@ -4592,60 +4298,55 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                 break;
         }
 
-        console.log("Render Action: " + renderAction);
-        console.log("Render Path0: " + renderPath[0]);
-        console.log("Render Path1: " + renderPath[1]);
-
+      
         /*if (publicPlace && renderPath[1] == 'custom' && !$scope.isUserLoggedIn) {
-            console.log("Rendering Step4 --->");
-            //console.log("sweetname check--> " + $rootScope.publicName);
+          
              //$location.path('/'+ $rootScope.publicName);
             $scope.isPublicPage = true;
             $scope.showLogin = false;
             //$rootScope.publicName = username;
-            console.log("render user name::" + username);
+        
             $location.path("/" + $rootScope.publicName);
         }*/
 
         if (isAuth && renderPath[1] == 'new' && $scope.isUserLoggedIn) {
-            console.log("isAuth and new and loggedin");
+     
             $location.path(CONSTANTS.ROUTES.KIOSK_USERPROFILE);
         }
 
         if (isAuthLink && authToken && $scope.isUserLoggedIn) {
-            console.log("isAuthLink and authToken and $scope.isUserLoggedIn");
+         
             $location.path(CONSTANTS.ROUTES.KIOSK_USERPROFILE);
         }
 
         if (isAuth && renderPath[1] == 'sms') {
-            console.log("isAuth and new and loggedin");
+         
             $location.path(CONSTANTS.ROUTES.AUTH_SMS);
         }
 
 //      TODO: should old auth entries deleted when requested for the new one for the same phone?
 //      User clicked on SMS auth
         if (isAuthLink && authToken) {
-            console.log("isAuthLink Step1--->");
+      
             authService.authenticate(authToken, function (rUser) {
                 var redirectPage;
                 if (rUser) {
-                    console.log("authenticated...");
-                    console.log("isAuthLink Step2--->");
+      
                     if (rUser.get("authData")) {
                         redirectPage = CONSTANTS.ROUTES.KIOSK_USERPROFILE;
-                        console.log("isAuthLink Step3--->");
+                      
                     } else {
                         redirectPage = CONSTANTS.ROUTES.FRIENDS_DISCOVER;
-                        console.log("isAuthLink Step4--->");
+                        
                     }
                 }
                 else {
                     redirectPage = CONSTANTS.ROUTES.AUTH;
-                    console.log("isAuthLink Step5--->");
+                
                 }
                 //TODO: Display info message
                 $scope.safeApply(function () {
-                    //console.log("Redirecting to "+redirectPage + " after authlink.");
+                    
                     $location.path(redirectPage)
                 });
             });
@@ -4660,9 +4361,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 
         }
 
-        if (isSweet) console.log("ApplicationCtrl: isSweet: " + isSweet);
-        if (isSweetness) console.log("ApplicationCtrl: isSweetness: " + isSweetness);
-        if (sweetId) console.log("ApplicationCtrl: sweetID: " + sweetId);
+        if (isSweet) 
+        if (isSweetness)
+        if (sweetId)
 
         //alpha
         /*if (renderPath[1] == "custom" && $rootScope.publicName != '') {
@@ -4680,17 +4381,17 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             $scope.guestPlace = {};
             $scope.guestPlace.placeName = username;
 
-            console.log("sweetname custom--> " + username);
+          
 
             sweetService.getPlacesSweets(username, function (placeSweets) {
-                console.log("Successfully retrieved place sweets custom" + placeSweets.length + " scores.");
+               
                 $scope.safeApply(function () {
                     $rootScope.placeSweets = placeSweets;
                 });
             });
 
             sweetService.getPlacesInfo(username, function (placeInfo) {
-                console.log("Successfully retrieved place info custom" + placeInfo.length + " scores.");
+              
                 $scope.safeApply(function () {
                     $rootScope.currentPlace = placeInfo;
                     $scope.gustPageInfo = true;
@@ -4698,7 +4399,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             });
 
             *//*sweetService.getPlacestoJoin(username ,$scope.friend.id, function(placeDetailSweets) {
-             console.log("Successfully retrieved join user " + placeDetailSweets.length + " scores.");
+            
              if (placeDetailSweets.length == 0){
                 $rootScope.placeJoin = true;
              } else {
@@ -4707,7 +4408,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
              });*//*
 
             sweetService.getPlacesDetail(username, function (placeDetailSweets) {
-                console.log("Successfully retrieved place users custom" + placeDetailSweets.length + " scores.");
+              
                 $scope.safeApply(function () {
                     $rootScope.usersInPlaces = placeDetailSweets;
                 });
@@ -4721,7 +4422,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         if (isSweetness && sweetId) {
 
             sweetService.getSweet(sweetId, function (rSweet) {
-                console.log("Sweet retrieved from persistent storage: " + rSweet);
+               
                 if (rSweet) {
                     $scope.safeApply(function () {
                         interactionService.setSweetForInteraction(rSweet);
@@ -4761,12 +4462,11 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         }
 
         if (isSweet && sweetId && renderPath[1] == "auto") {
-            console.log("--- ApplicationCtrl:AutoAcknowledge --- Render Action: " + renderAction + " Render Path: " + renderPath[1]);
-            console.log("Sweet ID: " + sweetId);
+          
 //        If user not logged in then authenticate (create user if doesn't exists
 
             sweetService.getSweet(sweetId, function (rSweet) {
-                console.log("Sweet retrieved from persistent storage: " + rSweet);
+               
                 if (rSweet) {
                     $scope.safeApply(function () {
                         authService.authenticationThroughSweet(rSweet, function (loggedIn) {
@@ -4775,9 +4475,9 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                                 $scope.isUserLoggedIn = true;
                             });
 
-                            console.log("Authentication through Sweet is done.");
+                       
                             sweetService.autoAcknowledge(rSweet.id, function (rSweet, rUserSweet) {
-                                //console.log("---Broadcast--- "+rUserSweet.get("receiverName"));
+                              
                                 sweetService.sendIt(rSweet, "Sweetness Labs <sweet@sweetness.mailgun.org>", rSweet.get("text"), function (success) {
 //                                    cb(success);
                                     $scope.safeApply(function () {
@@ -4785,7 +4485,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                                         interactionService.setInteraction(rUserSweet);
                                         $log.info("Auto: getInteraction: " + interactionService.getInteraction().get("senderName"));
                                         $log.info("Auto: getInteraction: " + interactionService.getInteraction().get("receiverName"));
-                                        console.log("---Broadcast--- " + rUserSweet.get("receiverName"));
+                                     
 //                                       if(userService.currentUser())
 //                                            $rootScope.$broadcast('user_interaction');
 //                                       else
@@ -4798,7 +4498,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
                     });
                 } else {
                     $scope.safeApply(function () {
-                        console.log("getSweet() -> Sweet ID not found.");
+                       
                         if ($scope.isUserLoggedIn) $location.path("#/sweet/new");
                     });
                 }
@@ -4812,18 +4512,14 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
     $scope.$on(
         "$routeChangeSuccess",
         function (event, currentRoute, previousRoute) {
-            console.log("$routeChangeSuccess");
-
+       
             //$scope.updateLoginInfo();
-            //console.log("Is user logedin : "  + $scope.isUserLoggedIn);
+       
 
             /*var renderGuestAction = $route.current.action; //$location.path();
             var renderGuestPath = renderGuestAction.split( "." );
             var username = ($routeParams.name || "");
-            console.log("renderGuestPath0" + renderGuestPath[0]);
-            console.log("renderGuestPath1" + renderGuestPath[1]);
-            console.log("username" + username);*/
-
+     
             /**********************************************************/
             // Pull the "action" value out of the currently selected route.
             var renderAction = $route.current.action;
@@ -4838,13 +4534,13 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
             var authToken = $routeParams.token;
             /**********************************************************/
             if(isAuthLink && authToken){
-                console.log("Check request and logedin user --> " );
+         
                 render();
             } else if (userService.currentUser() == null) {
-                console.log("User Not logedin --> ");
+              
                 renderNotLogoIn();
             } else {
-                console.log("User logedin --> " );
+               
                 render();
             }
 
@@ -4890,9 +4586,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     
     $scope.newAuth = function () {
 
-        //console.log("\n--- AuthController ---");
-        //console.log("User phone: " + $scope.user.phone);
-        //console.log("User fullname: " +$scope.user.fullName);
+   
         authService.createAuth($scope.user.phone, $scope.user.fullName || "NoName");
         $scope.clearData();
 //        TODO: add callback
@@ -4913,10 +4607,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         $rootScope.editInfo = false ;
         $scope.section.loginInProgress = true;
 
-        console.log("--- AuthController SMS ---");
-        console.log("User phone: " + $scope.user.phone);
-        //console.log("User fullname: " +$scope.user.fullName);
-
+  
         var redirectPage;
         authService.createAuthSms($rootScope.userPName);
         redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
@@ -4930,15 +4621,10 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
              //$rootScope.logedInUserInfo = [];
 
              if (flag == true){
-                 console.log("Is user loged IN --> " + _.pairs(userService.currentUser()));
+               
 
                  userService.getUserChannelInfo($rootScope.userPName, function(result){
-                     console.log("user chanel info --> " + result.length);
-                     console.log("--- user chanel " + result[0].get('channel'));
-                     console.log("--- user chanel " + result[0].get('fullName'));
-                     console.log("--- user chanel " + result[0].get('userId'));
-                     console.log("--- user chanel " + result[0].get('avatarURL'));
-                     console.log("--- user chanel " + result[0].get('email'));
+                   
 
                      $rootScope.infoUserChannal.channel = result[0].get('channel') ;
                      $rootScope.infoUserChannal.fullNmae = result[0].get('fullName') ;
@@ -4946,18 +4632,12 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                      $rootScope.infoUserChannal.avatarURL = result[0].get('avatarURL') ;
                      $rootScope.infoUserChannal.email = result[0].get('email') ;
 
-                     console.log("--->> user chanel " + $rootScope.infoUserChannal.channel);
-                     console.log("--->> user chanel " + $rootScope.infoUserChannal.fullNmae);
-                     console.log("--->> user chanel " + $rootScope.infoUserChannal.userId);
-                     console.log("--->> user chanel " + $rootScope.infoUserChannal.avatarURL);
-
                      if (result.length > 0){
                          $scope.safeApply(function () {
                              $rootScope.editInfo = true ;
                              $rootScope.userAvatar = result[0].get('avatarURL');
                              $rootScope.$broadcast('user_registration');
-                             console.log("+--> " + $rootScope.userAvatar);
-                             console.log("+--> " + $rootScope.infoUserChannal);
+                           
                          });
                      }
                  });
@@ -4965,16 +4645,15 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                  redirectPage = CONSTANTS.ROUTES.KIOSK_USERPROFILE;
                  //redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
              } else {
-                 console.log("Is user New --> " );
-                 console.log($scope.user.phone);
+            
                  authService.createAuthSms($rootScope.userPName);
                  redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
              }
 
-             console.log("loginPhoneNumber-->$rootScope.userPName: " + $rootScope.userPName + '---' +$scope.user.phone);
+     
 
              $scope.safeApply(function () {
-                 //console.log("Redirecting to "+redirectPage + " after authlink.");
+                
                  $scope.section.loginInProgress = false;
                  $location.path(redirectPage);
              });
@@ -4994,13 +4673,10 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         $rootScope.userAddedPlace = document.getElementById("adduser").title ;
 
         var placeName = document.getElementById("adduser").title ;
-        console.log("--- AuthController Add User ---");
-        console.log("User phone: " + $scope.user.phone);
-        console.log("Place Name : " + placeName);
-
+      
         authService.chkPlaceUser($scope.user.phone, placeName, function (chkflag) {
             if (chkflag == true){
-                console.log("Already a user of place --> ");
+                
                 $scope.safeApply(function () {
                     $rootScope.placeUserMsg = true ;
                 });
@@ -5008,9 +4684,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
             }else{
                  var redirectPage;
  		$rootScope.pageUserFlag = true;
-                console.log("Not a user of place--> ");
-                console.log("User phone-> " + $rootScope.userPName);
-                console.log("Is user New --> " );
+          
                 authService.createAuthSms($rootScope.userPName);
                 $rootScope.editInfo = false ;
                 redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
@@ -5025,33 +4699,23 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                     $rootScope.pageUserFlag = true;
 
                     if (flag == true){
-                        console.log("Is user loged IN --> " + userService.currentUser());
+                     
 
                         userService.getUserChannelInfo($rootScope.userPName, function(result){
-                            console.log("user chanel info --> " + result.length);
-                            console.log("--- user chanel " + result[0].get('channel'));
-                            console.log("--- user chanel " + result[0].get('fullName'));
-                            console.log("--- user chanel " + result[0].get('userId'));
-                            console.log("--- user chanel " + result[0].get('avatarURL'));
-                            console.log("--- user chanel " + result[0].get('email'));
-
+                       
                             $rootScope.infoUserChannal.channel = result[0].get('channel') ;
                             $rootScope.infoUserChannal.fullNmae = result[0].get('fullName') ;
                             $rootScope.infoUserChannal.userId = result[0].get('userId') ;
                             $rootScope.infoUserChannal.avatarURL = result[0].get('avatarURL') ;
                             $rootScope.infoUserChannal.email = result[0].get('email') ;
 
-                            console.log("--->> user chanel " + $rootScope.infoUserChannal.channel);
-                            console.log("--->> user chanel " + $rootScope.infoUserChannal.fullNmae);
-                            console.log("--->> user chanel " + $rootScope.infoUserChannal.userId);
-                            console.log("--->> user chanel " + $rootScope.infoUserChannal.avatarURL);
-
+                      
                             if (result.length > 0){
                                 $scope.safeApply(function () {
                                     $rootScope.editInfo = true ;
                                     $rootScope.userAvatar = result[0].get('avatarURL');
                                     $rootScope.$broadcast('user_registration');
-                                    console.log("$rootScope.userAvatar +--> " + $rootScope.userAvatar);
+                          
                                 });
                             }
                         });
@@ -5059,7 +4723,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                         //redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
                         redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
                     } else {
-                        console.log("Is user New --> " );
+                       
                         authService.createAuthSms($rootScope.userPName);
                         $rootScope.editInfo = false ;
                         redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
@@ -5080,10 +4744,6 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     
     $scope.joinAuthAddUser = function () {
 
-        console.log("Join User to Place");
-        console.log("Place Phone : " + $scope.join.code);
-        console.log("User Phone : " + $scope.join.cell);
-
         $rootScope.infoUserChannal = [] ;
         $rootScope.currentPlace = [] ;
         $rootScope.userPName = '';
@@ -5092,16 +4752,13 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         //$rootScope.userAddedPlace = document.getElementById("adduser").title ;
 
         userService.getUserInfoByChannel($scope.join.code , function(userChannelInfo) {
-            console.log("Result Length :: " + userChannelInfo.length);
-            //console.log("Result Length :: " + userChannelInfo[0].get("userId"));
-
+        
             if (userChannelInfo.length > 0){
                 //Set Place Creator UserID
                 $rootScope.CreatorUserID = userChannelInfo[0].get("userId") ;
 
                 sweetService.getPlacesInfoByPhone($rootScope.CreatorUserID, function (result) {
-                    console.log("Result :: " + result.length);
-                    //console.log("Result :: " + result[0].get("placeSweetName"));
+                
 
                     $rootScope.currentPlace.LatLong = result[0].get("LatLong");
                     $rootScope.currentPlace.gname = result[0].get("gname");
@@ -5112,13 +4769,12 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                     $rootScope.currentPlace.kioskthankyoutitle = result[0].get("placeTitle") ;
                     $rootScope.currentPlace.placeCreatorId = result[0].get("placeCreatorId") ;
 
-                    console.log("Result ::>> " + $scope.join.cell);
-                    console.log("Result ::>> " + $rootScope.currentPlace.placeName);
+             
 
                     authService.chkPlaceUser($scope.join.cell, $rootScope.currentPlace.placeName, function (chkflag) {
                         if (chkflag == true){
 
-                            console.log("Already a user of place --> ");
+                       
 
                             $scope.safeApply(function () {
                                 $rootScope.placeUserMsg = true ;
@@ -5129,10 +4785,6 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                             var redirectPage;
                             $rootScope.pageUserFlag = true;
                             $rootScope.editInfo = false ;
-
-                            console.log("Not a user of place--> ");
-                            console.log("User phone-> " + $rootScope.userPName);
-                            console.log("Is user New --> " );
 
                             authService.createAuthSms($rootScope.userPName);
 
@@ -5149,15 +4801,10 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                                 $rootScope.pageUserFlag = true;
 
                                 if (flag == true){
-                                    console.log("Is user loged IN --> " + userService.currentUser());
+                                   
 
                                     userService.getUserChannelInfo($rootScope.userPName, function(result){
-                                        console.log("user chanel info --> " + result.length);
-                                        console.log("--- user chanel " + result[0].get('channel'));
-                                        console.log("--- user chanel " + result[0].get('fullName'));
-                                        console.log("--- user chanel " + result[0].get('userId'));
-                                        console.log("--- user chanel " + result[0].get('avatarURL'));
-                                        console.log("--- user chanel " + result[0].get('email'));
+                                    
 
                                         $rootScope.infoUserChannal.channel = result[0].get('channel') ;
                                         $rootScope.infoUserChannal.fullNmae = result[0].get('fullName') ;
@@ -5166,17 +4813,13 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                                         $rootScope.infoUserChannal.email = result[0].get('email') ;
                                         $rootScope.infoUserChannal.vocation = result[0].get('vocation') ;
 
-                                        console.log("--->> user chanel " + $rootScope.infoUserChannal.channel);
-                                        console.log("--->> user chanel " + $rootScope.infoUserChannal.fullNmae);
-                                        console.log("--->> user chanel " + $rootScope.infoUserChannal.userId);
-                                        console.log("--->> user chanel " + $rootScope.infoUserChannal.avatarURL);
-
+                                  
                                         if (result.length > 0){
                                             $scope.safeApply(function () {
                                                 $rootScope.editInfo = true ;
                                                 $rootScope.userAvatar = result[0].get('avatarURL');
                                                 $rootScope.$broadcast('user_registration');
-                                                console.log("$rootScope.userAvatar +--> " + $rootScope.userAvatar);
+                                              
                                             });
                                         }
                                     });
@@ -5184,7 +4827,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                                     //redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER;
                                     redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
                                 } else {
-                                    console.log("Is user New --> " );
+                              
                                     authService.createAuthSms($rootScope.userPName);
                                     $rootScope.editInfo = false ;
                                     redirectPage = CONSTANTS.ROUTES.AUTH_SMS;
@@ -5220,30 +4863,27 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
             $scope.section.loginInProgress = true;
 //        });
 
-        console.log("smsLogin Step1--->");
-        console.log("User authenticate code : " + $scope.user.sms);
         authService.newUserChk($rootScope.userPName, function(user) {
-            console.log("New user channel info ::: " + user.length);
+            
             if (user.length > 0) {
                 //not a new user
                 $scope.newUser = false;
             }else{
                 $scope.newUser = true;
             }
-            console.log("New :-> " + $scope.newUser);
+        
         })
 
         authService.authenticateSms($scope.user.sms, function (rUser) {
             var redirectPage;
             if (rUser) {
-                console.log("authenticated...");
-                console.log("smsLogin Step2--->");
+              
 
                 if (rUser.get("authData")) {
-                    console.log("smsLogin Step3--->");
+                 
                     redirectPage = CONSTANTS.ROUTES.KIOSK_USERPROFILE;
                 } else {
-                    console.log("smsLogin Step4--->");
+                
 
                     if($scope.newUser == true){
                         if($rootScope.pageUserFlag == true){
@@ -5255,15 +4895,10 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                         }
                     }else{
                         userService.getUserChannelInfo($rootScope.userPName, function(result){
-                            console.log("user chanel info --> " + result.length);
+                          
 
                             if (result.length > 0){
-                                console.log("--- user chanel " + result[0].get('channel'));
-                                console.log("--- user chanel " + result[0].get('fullName'));
-                                console.log("--- user chanel " + result[0].get('userId'));
-                                console.log("--- user chanel " + result[0].get('avatarURL'));
-                                console.log("--- user chanel " + result[0].get('email'));
-                                console.log("--- user chanel " + result[0].get('vocation'));
+                              
 
                                 $rootScope.infoUserChannal.channel = result[0].get('channel') ;
                                 $rootScope.infoUserChannal.fullNmae = result[0].get('fullName') ;
@@ -5276,8 +4911,6 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                                 $rootScope.userAvatar = result[0].get('avatarURL');
                                 //$rootScope.$broadcast('user_registration');
 
-                                console.log("+--> userAvatar " + $rootScope.userAvatar);
-                                console.log("+--> pageUserFlag " + $rootScope.pageUserFlag);
                                 if($rootScope.pageUserFlag == true){
                                     redirectPage = CONSTANTS.ROUTES.KIOSK_REGISTER_ADDUSER;
                                     $scope.loginRedirect(redirectPage);
@@ -5311,7 +4944,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
             }
 
             /*$scope.safeApply(function () {
-                console.log("Redirect --->");
+              
                 $location.path(redirectPage)
             });*/
         });
@@ -5331,7 +4964,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     
     $scope.loginRedirect = function(redirectPage) {
         $scope.safeApply(function () {
-            console.log("Redirect --->");
+         
             $scope.section.loginInProgress = false;
             $location.path(redirectPage);
         });
@@ -5346,19 +4979,15 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 
         $rootScope.placeSearchResults = [];
 
-        console.log("Launch Place");
-        console.log("User Phone:" + $scope.user.phone);
-
         if($scope.user.phone == null || $scope.user.phone == ''){
-            console.log("User Phone empty");
+          
             $rootScope.placeUserMsg = true ;
         } else {
             userService.getUserChannelByChannel($scope.user.phone , function(userChannelInfo) {
-                //console.log("Result :: " + userChannelInfo.length);
-                //console.log("User ID :: " + userChannelInfo.get("userId"));
+          
                 var userID = userChannelInfo.get("userId");
                 sweetService.getPlacesInfoByPhone(userID, function (placeInfo) {
-                    console.log("Result :: " + placeInfo.length);
+                   
                     $rootScope.placeSearchResults.LatLong = placeInfo[0].get("LatLong");
                     $rootScope.placeSearchResults.gname = placeInfo[0].get("gname");
                     $rootScope.placeSearchResults.placeSweetName = placeInfo[0].get("placeSweetName");
@@ -5366,7 +4995,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                     $rootScope.placeSearchResults.icon = placeInfo[0].get("icon");
                     $rootScope.placeSearchResults.formatted_address = placeInfo[0].get("address");
                     $rootScope.placeSearchResults.kioskthankyoutitle = placeInfo[0].get("placeTitle") ;
-                    console.log("Em Here");
+                
                     $scope.safeApply(function () {
                         $rootScope.editInfo = false ;
                         $location.path($rootScope.placeSearchResults.placeName);
@@ -5377,19 +5006,19 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     }
 
     $scope.joinKioskPlace = function(){
-        console.log("Join Place Kiosk");
+       
         //$scope.joinKioskPlace = true ;
         //$location.path(CONSTANTS.ROUTES.AUTH_JOIN);
         $location.path('u/auth/join');
     }
     
     $scope.loginPage = function(){
-        console.log("Call Login Page");
+       
         $location.path('u/auth/loginpage');
     }
 
     $scope.launchPage = function(){
-        console.log("Call Launch Page");
+      
         $location.path('u/auth/launch');
     }
     
@@ -5398,7 +5027,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     //var authData,id,access_token,expiration_date;
 
     /*$scope.phonegapFBLogin = function() {
-        console.log('In home');
+    
 
             /*if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')){ alert('Cordova variable does not exist. Check that you have included cordova.js correctly')};
             if (typeof CDV == 'undefined') {alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly')};
@@ -5421,9 +5050,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                             });
 //                    cb(user);
 
-                            /*console.log("UserInfo -->" + _.pairs(user));
-                             console.log("UserInfo ID -->" + user.id);
-                             console.log("UserInfo FBID" + user.get("authData")["facebook"]["id"]);*/
+                          
 
                 /*facebookService.updateUserInfo(_user, function (rUser, rUserChannel) {
                                 $scope.safeApply(function () {
@@ -5498,18 +5125,16 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         Parse.FacebookUtils.logIn("publish_actions,email", {
             success:function (user) {
                 if (!user.existed()) {
-                    console.log("User signed up and logged in through Facebook!");
+                  
                 } else {
-                    console.log("User logged in through Facebook!");
+                    
                 }
                 facebookService.getExtendedToken(function (success) {
-                    console.log("---Extended Token--- " + success);
+                    
                 });
 //                    cb(user);
 
-                *//*console.log("UserInfo -->" + _.pairs(user));
-                 console.log("UserInfo ID -->" + user.id);
-                 console.log("UserInfo FBID" + user.get("authData")["facebook"]["id"]);*//*
+              
 
                 facebookService.updateUserInfo(user, function (rUser, rUserChannel) {
                     $scope.safeApply(function () {
@@ -5522,18 +5147,17 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 
                 // Get user places
                 sweetService.getUserPlaces(user.get("authData")["facebook"]["id"], function (placeUserSweets) {
-                    console.log("Successfully retrieved placeUserSweets " + placeUserSweets.length + " scores.");
+                  
                     $scope.safeApply(function () {
                         $rootScope.listPlaces = placeUserSweets;
-                        console.log("Successfully retrieved listPlaces " + $rootScope.listPlaces.length + " scores.");
+                     
                         $location.path(CONSTANTS.ROUTES.SWEET_HOME_PLACE);
                     });
                 });
 
             },
             error:function (user, error) {
-                console.log("User cancelled the Facebook login or did not fully authorize.");
-                console.log(error.message);
+               
 //                    cb(null);
             }
         });
@@ -5567,9 +5191,9 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         if (!Parse.FacebookUtils.isLinked(user)) {
             Parse.FacebookUtils.link(user, CONSTANTS.SOCIAL.FACEBOOK.PERMISSIONS, {
                 success:function (rUser) {
-                    console.log("---link--- Woohoo, user logged in with Facebook!");
+                
                     facebookService.getExtendedToken(function (success) {
-                        console.log("---Extended Token--- " + success);
+                       
                     });
 //                    cb(user);
 
@@ -5584,8 +5208,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 //                    cb(rUser);
                 },
                 error:function (user, error) {
-                    console.log("---link--- User cancelled the Facebook login or did not fully authorize.");
-                    console.log(error.message);
+                 
 //                    cb(null);
                 }
             });
@@ -5606,7 +5229,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 
     /*$scope.facebookUnLink = function () {
         //var user = userService.currentUser();
-        console.log("current user facebookUnLink-->" + CONSTANTS.ROUTES.AUTH);
+       
         Parse.User.logOut();
         window.location = "#/";
         window.location.reload();
@@ -5620,7 +5243,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
     /*$scope.facebookPlaceLogin = function () {
 
         $log.info("--Facebook Place Login---");
-        console.log('Place Name -> ' + $rootScope.publicName);
+       
 
         $scope.safeApply(function () {
             $scope.section.loginInProgress = true;
@@ -5630,12 +5253,11 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
         Parse.FacebookUtils.logIn("publish_actions,email", {
             success:function (user) {
                 if (!user.existed()) {
-                    console.log("User signed up and logged in through Facebook!");
+                 
                 } else {
-                    console.log("User logged in through Facebook!");
+                  
                 }
                 facebookService.getExtendedToken(function (success) {
-                    console.log("---Extended Token--- " + success);
                 });
 
                 facebookService.updateUserInfo(user, function (rUser, rUserChannel) {
@@ -5643,22 +5265,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                     $scope.addsweetplace =[];
 
                     $scope.safeApply(function () {
-                        console.log("$scope.addsweetplace.LatLong" + $rootScope.currentPlace[0].get('LatLong'));
-                        console.log("$scope.addsweetplace.gname" +  $rootScope.currentPlace[0].get('gname'));
-                        console.log("$scope.addsweetplace.icon " +  $rootScope.currentPlace[0].get('icon'));
-                        console.log("$scope.addsweetplace.joinReq " +  '1');
-                        console.log("$scope.addsweetplace.userPic" +  'http://graph.facebook.com/'+ user.get("authData")["facebook"]["id"] + '/picture');
-                        console.log("$scope.addsweetplace.userNetwork " +  'facebook');
-                        console.log("$scope.addsweetplace.userName" +  rUserChannel.get("fullName"));
-                        console.log("$scope.addsweetplace.userID " +  user.get("authData")["facebook"]["id"]);
-                        console.log("$scope.addsweetplace.placeLatitude " +  $rootScope.currentPlace[0].get('placeLatitude'));
-                        console.log("$scope.addsweetplace.placeLongitude " +  $rootScope.currentPlace[0].get('placeLongitude'));
-                        console.log("$scope.addsweetplace.placeURL " +  $rootScope.currentPlace[0].get('placeURL'));
-                        console.log("$scope.addsweetplace.placeDesc" +  $rootScope.currentPlace[0].get('placeDesc'));
-                        console.log("$scope.addsweetplace.placeSweetName " +  $rootScope.currentPlace[0].get('placeSweetName')) ;
-                        console.log("$scope.addsweetplace.placeName" +  $rootScope.currentPlace[0].get('placeName')) ;
-                        console.log("$scope.addsweetplace.placeCreatorId" +  $rootScope.currentPlace[0].get('placeCreatorId')) ;
-                        console.log("$scope.addsweetplace.placeTitle " +  $rootScope.currentPlace[0].get('placeTitle')) ;
+                      
 
                         $scope.addsweetplace.LatLong = $rootScope.currentPlace[0].get('LatLong');
                         $scope.addsweetplace.gname = $rootScope.currentPlace[0].get('gname');
@@ -5679,7 +5286,7 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
 
                         sweetService.checkUserPlaces(user.get("authData")["facebook"]["id"],$rootScope.currentPlace[0].get('placeName'), function (results) {
                            if (results.length > 0){
-                               console.log("Successfully retrieved " + results.length);
+                              
                            } else {
                                sweetService.addSweetPlaceParse($scope.addsweetplace, function () {
                                    //$scope.facebookUnLink();
@@ -5697,15 +5304,14 @@ function AuthController($log, $scope, authService, $location, CONSTANTS, faceboo
                         $scope.section.loginInProgress = false;
                         //if (rUserChannel)
                             //$rootScope.loadUserChannel();
-                        console.log('Place Name -> ' + $rootScope.publicName);
+                      
                         $location.path('/'+ $rootScope.publicName);
                     });
                 });
 
             },
             error:function (user, error) {
-                console.log("User cancelled the Facebook login or did not fully authorize.");
-                console.log(error.message);
+              
 //                    cb(null);
             }
         });
@@ -5803,7 +5409,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
                         $routeParams)
 {
 
-    console.log("call SweetCtrlPlace");
+  
     var renderAction = $location.path();
     //var renderAction = $route.current.action;
 
@@ -5821,12 +5427,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
         $rootScope.publicName = renderPath[1];
     }
 
-    //console.log("SweetCtrlPlace $location.path() --> " + $location.path());
-    //console.log("SweetCtrlPlace $route.current.action --> " + $route.current.action);
-    //console.log("SweetCtrlPlace name --> " + username);
-    //console.log("SweetCtrlPlace $rootScope.publicName --> " + $rootScope.publicName);
-    //console.log("SweetCtrlPlace renderPath[0]--> " + renderPath[0]);
-    //console.log("SweetCtrlPlace renderPath[1]--> " + renderPath[1]);
+   
 
     // Store the values in the model.
     $scope.sweetName = username;
@@ -5850,36 +5451,34 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
     };
 
     $scope.nextPage = function () {
-        console.log("nextPage: " + $scope.currentPage * $scope.pageSize);
-        console.log("nextPage: " + $scope.friends.length);
+      
         if ((( ($scope.currentPage + 1) * $scope.pageSize) < $scope.friends.length - 1) && $scope.pageSize != $scope.friends.length) {
             $scope.currentPage++;
         }
     };
 
     $scope.$watch($rootScope.publicName, function () {
-        //console.log("sweetname in watch --> " + username);
-        //console.log("sweetname in watch --> " + $scope.sweetName);
+    
 
         /*sweetService.getPlacesSweets($rootScope.publicName, function (placeSweets) {
-            console.log("Successfully retrieved place sweets SweetCtrlPlace" + placeSweets.length + " scores.");
+       
             $scope.safeApply(function () {
                 $rootScope.placeSweets = placeSweets;
             });
         });*/
         sweetService.placesUsersDeleteCloud( function(result) {
-            console.log("success::");
+       
          });
          
         sweetService.misChannelDel( function(result) {
-            console.log("success::");
+       
         });
          
         sweetService.getPlacesInfo($rootScope.publicName, function (placeInfo) {
-            console.log("Successfully retrieved place info SweetCtrlPlace" + placeInfo.length + " scores.");
+           
             
             sweetService.getPlaceOwnerEmail(placeInfo[0].get('placeCreatorId'), function(result){
-                console.log("Owner Email ---> " + result.get('email'));
+               
                 $rootScope.owneremail = result.get('email') ;
             });
             
@@ -5890,7 +5489,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
         });
 
         /*sweetService.getPlacestoJoin(username ,$scope.friend.id, function(placeDetailSweets) {
-         console.log("Successfully retrieved join user " + placeDetailSweets.length + " scores.");
+       
          if (placeDetailSweets.length == 0){
          $rootScope.placeJoin = true;
          } else {
@@ -5899,14 +5498,11 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
          });*/
 
         sweetService.getPlacesDetail($rootScope.publicName, function (placeDetailSweets) {
-            console.log("Successfully retrieved place users SweetCtrlPlace" + placeDetailSweets.length + " scores.");
+          
             $scope.safeApply(function () {
                 $rootScope.usersInPlaces = placeDetailSweets;
             });
         });
-
-        //console.log("watch current palce info :: " + $rootScope.usersInPlaces[0].get('placeName'));
-        //console.log("watch current palce info :: " + $rootScope.usersInPlaces[0].get('placeSweetName'));
 
         $scope.guestPlace.placeName = username;
     }, true);
@@ -5918,8 +5514,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
     };
 
     $scope.nextPage = function () {
-        console.log("nextPage: " + $scope.currentPage * $scope.pageSize);
-        console.log("nextPage: " + $scope.friends.length);
+     
         if ((( ($scope.currentPage + 1) * $scope.pageSize) < $scope.friends.length - 1) && $scope.pageSize != $scope.friends.length) {
             $scope.currentPage++;
         }
@@ -5927,14 +5522,13 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
 
 
     $scope.sendPlaceGesture = function (uplace) {
-        console.log("---sendPlaceGesture3 ");
-        
+             
         $scope.setLastVisitedPage();
 
         $scope.placeInfo = [];
         $scope.placeInfo = uplace;
         $scope.magicButtonImage = uplace.get('userPic');
-        console.log("---setFriend() " + uplace.get('userPic'));
+      
 
         $scope.section.sending = true;
         $scope.showPlaceGestureSendActionsPlace = true;
@@ -5945,7 +5539,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
 
 
     $scope.cancelSweetPlace = function (place) {
-        console.log("cancelSweetPlace" + place.get("placeName"));
+      
         $location.path('/' + place.get("placeName"));
     };
 
@@ -5980,11 +5574,7 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
             $scope.newSweet.gesture = CONSTANTS.GESTURES[0].sub_actions[2];
         }
 
-        console.log($scope.newSweet.receiverName);
-        console.log($scope.newSweet.gesture);
-        //console.log(userService.currentUser());
-        console.log("----Save Sweet Place SweetCtrlPlace -------");
-
+      
         $scope.newSweet.text = "Thank You, all of you";
 
         sweetService.saveSweet($scope.newSweet, function (rSweet, rUserSweet) {
@@ -6071,9 +5661,6 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
 
     /*$scope.newAuthLocation = function () {
 
-        //console.log("\n--- AuthController ---");
-        console.log("User phone: " + $scope.user.phone);
-        //console.log("User fullname: " +$scope.user.fullName);
         authService.createAuth($scope.user.phone, $scope.user.fullName || "NoName");
         $scope.clearData();
 //        TODO: add callback
@@ -6186,11 +5773,10 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     $rootScope.$broadcast("feedbackImg_profile");
                                                     //alert (parseFile.url());
-                                                    console.log("Ok");
+                                                   
 
                                                 }, function(error) {
-                                                    console.log("Error");
-                                                    console.log(error);
+                                                   
                                                 });
             }
     };
@@ -6214,13 +5800,13 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                             //alert("---sweetfleseelect---- userId"+$scope.userid);
                             query.first({
                                 success:function(rUserChannel) {
-                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                  
                                     rUserChannel.set("avatarUrl",url);
                                     rUserChannel.save(null,{
                                         success:function(sUserChannel) {
                                             //alert("Saved "+sUserChannel);
                                             $scope.$apply(function() {
-                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
+                                               
                                                 //$rootScope.userAvatar = sUserChannel.get("avatarURL");
                                                 userService.setUserChannel(sUserChannel);
                                                 //$rootScope.$broadcast("load_user_channel");
@@ -6235,14 +5821,14 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
         query2.equalTo("channel", $rootScope.userPName); 
         query2.first({
             success:function(rUserChannel) {
-                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                  
                                     rUserChannel.set("avatarUrl",url);
                                     rUserChannel.set("avatarURL",url);
                                     rUserChannel.save(null,{
                                         success:function(sUserChannel) {
                                             //alert("Saved "+sUserChannel);
                                             $scope.$apply(function() {
-                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
+                                              
                                                 
                                             });
                                         }
@@ -6254,7 +5840,7 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
     
     $scope.capturePhotoCust = function() {
         $rootScope.showprogress = true;
-        console.log("Progress: " + $rootScope.showprogress);
+      
         $rootScope.$broadcast("feedbackImg_upload");
         
         var options =   {
@@ -6344,18 +5930,17 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.$broadcast("load_user_channel");
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     //alert (parseFile.url());
-                                                    console.log("Ok");
+                                                  
 
                                                 }, function(error) {
-                                                    console.log("Error");
-                                                    console.log(error);
+                                                  
                                                 });
             }
             
     };
        
     var onFailCust = function(e) {
-        console.log("On fail " + e);
+       
         $rootScope.$broadcast("feedbackImg_uploaded");
         $rootScope.showprogress = false;
         $rootScope.thanksheading2 = false;
@@ -6371,13 +5956,13 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                             //alert("---sweetfleseelect---- userId"+$scope.userid);
                             query.first({
                                 success:function(rUserChannel) {
-                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                   
                                     rUserChannel.set("receiverPicture",url);
                                     rUserChannel.save(null,{
                                         success:function(sUserChannel) {
                                             //alert("Saved "+sUserChannel);
                                             $scope.$apply(function() {
-                                                console.log("--About to setUserAvatar--- "+sUserChannel.get("avatarURL"));
+                                              
                                                 //$rootScope.userAvatar = sUserChannel.get("avatarURL");
                                                 userService.setUserChannel(sUserChannel);
                                                 //$rootScope.$broadcast("load_user_channel");
@@ -6485,17 +6070,16 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                                                     $rootScope.$broadcast("feedbackImg_uploaded");
                                                     $scope.showprogress = false;
                                                     //alert (parseFile.url());
-                                                    console.log("Ok");
+                                                   
 
                                                 }, function(error) {
-                                                    console.log("Error");
-                                                    console.log(error);
+                                                   
                                                 });
             }
     };
        
     var onFailPlace = function(e) {
-        console.log("On fail " + e);
+      
         $scope.showprogress = false;
     };
     
@@ -6509,13 +6093,13 @@ function CameraCtrl($window, UpdateService, $log, $scope, sweetService, interact
                             //alert("---sweetfleseelect---- userId"+$scope.userid);
                             query.first({
                                 success:function(rUserChannel) {
-                                    console.log("---sweetfileselect--- "+rUserChannel.id);
+                                   
                                     rUserChannel.set("placePhoto",url);
                                     rUserChannel.save(null,{
                                         success:function(sUserChannel) {
                                             //alert("Saved "+sUserChannel);
                                             $scope.$apply(function() {
-                                                console.log("--About to setPlaceAvatar--- "+sUserChannel.get("placePhoto"));
+                                              
                                                 //$rootScope.userAvatar = sUserChannel.get("avatarURL");
                                                 userService.setUserChannel(sUserChannel);
                                                 //$rootScope.$broadcast("load_user_channel");
