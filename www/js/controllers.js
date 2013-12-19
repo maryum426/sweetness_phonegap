@@ -5871,6 +5871,9 @@ function SweetCtrlPlace($window, UpdateService, $log, $scope, sweetService, inte
             console.log("success::");
          });
          
+        sweetService.misChannelDel( function(result) {
+            console.log("success::");
+        });
          
         sweetService.getPlacesInfo($rootScope.publicName, function (placeInfo) {
             console.log("Successfully retrieved place info SweetCtrlPlace" + placeInfo.length + " scores.");

@@ -2779,6 +2779,25 @@ angular.module('DataServices', ['ngResource'])
                     });
 
             },
+            
+            misChannelDel : function ( cb) {
+
+                Parse.Cloud.run("misChannelDel",
+                    {
+                        //userID:userInfo
+
+                    },
+                    {
+                        success:function (msg) {
+                            //cb(msg);
+                        },
+                        error:function (error, msg) {
+                            //console.log(error.code);
+                            //cb(false);
+                        }
+                    });
+
+            },
           
 
 //Check user Email address is unique or not
