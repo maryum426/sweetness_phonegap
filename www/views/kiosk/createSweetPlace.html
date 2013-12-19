@@ -1,0 +1,57 @@
+<form name="placeForm" onkeypress="return event.keyCode != 13;">
+    <div id="mybody" class="wrapper no-bg-color">
+        <div class="container_ROW">
+            <header class="header no-padding">
+                <div class="reorder-holder"><a class="reorder-color"><i id="remove-icon" class="icon-signout" ng-click="backRegister()"></i></a>
+                    <!--<span class="total-notification">5</span>-->
+                </div>
+                <div class="search-holder"><a id="rc" class="remove-color-search"><img src="images\search-icon.png"></a></div>
+                <div class="search-field">
+                    <input name="placeaddress" id="target" type="text" class="text-field" placeholder="SEARCH"
+                           ng-model="kiosk.address" required>
+                </div>
+                <div class="remove-holder"><a id="rc" class="remove-color"><i id="remove-icon" class="icon-remove-sign icon-large" ng-click="empty()"></i></a></div>
+                <span class="profile-status">
+                    <img src="images/profile_image.png" ng-src="http://fast-bayou-8907.herokuapp.com/convert?resize=50x50&source={{userAvatar}}" alt="image" ng-click="backRegister()" >
+                </span>
+            </header>
+
+            <session ng-show="!showClaim">
+                <div id="map_canvas" class="map-holder"></div>
+            </session>
+
+            <div class="col02-placeMsg" ng-show="placeMsg">
+                <span class="place-msg">Place already exists</span>
+                    <div class="send-btn" ng-click="placeClaimBack()">
+                        <a class="exist-ok-btn">Ok</a>
+<!--                        <a class="launch-ok-btn" ng-click="launchKioskClaim()">Launch</a>-->
+                    </div>
+            </div>
+
+            <!-- ************************************************************************************** -->
+            <!-- ****************************** Show place claim  ************************************* -->
+            <!-- ************************************************************************************** -->
+            <section ng-show="showClaim">
+                <div class="banner"> <img src="images/banner-2.png" alt="banner"> </div>
+                <div class="social-network">
+                    <div class="social-holder-info">
+                        <span class="social-title">{{placeSearchResults.gname}}</span>
+                        <em class="social-view">{{placeSearchResults.formatted_address}}</em>
+                    </div>
+
+                </div>
+                <div class="container">
+                    <div class="claim-holder-box">
+                        <span class="work-title">Would you like to claim this place?</span>
+                        <ul class="claim-holder clh-padding">
+                            <li><a ng-click="placeClaimBack()">back</a></li>
+                            <li><a ng-click="creatPlaceKiosk()" class="active">claim</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- ----------------------------- End Place claim ---------------------------------------- -->
+            <!-- -------------------------------------------------------------------------------------- -->
+        </div>
+    </div>
+</form>

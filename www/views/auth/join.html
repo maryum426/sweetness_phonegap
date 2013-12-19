@@ -1,0 +1,26 @@
+<div class="wrapper" ng-controller="AuthController">
+    <div class="container_ROW">
+        <a class="logo"><img src="images/logo.png" alt="sweet"></a>
+        <div class="enter-NUMBER-holder">
+            <input name="" placeholder="Enter Team Code" class="texfield" type="tel" ng-model="join.code">
+            <input name="" placeholder="Enter Mobile Number" class="texfield" type="tel" ng-model="join.cell">
+            <a ng-click="backLogin()" class="login-btn-cancel">Cancel</a>
+            <input type="submit" name="" value="Join" class="login-btn2 ios-btn" ng-click="joinAuthAddUser()">
+        </div>
+    </div>
+</div>
+<section ng-show="section.loginInProgress" >
+
+    <br/>
+
+    <div id="spinner" align="center"></div>
+
+    <br/><br/><br/><br/><br/>
+
+</section>
+
+
+<div class="col02-placeUserMsg" ng-show="placeUserMsg" ng-controller="AuthController">
+    <span class="place-msg">Already on Team!</span>
+    <div class="send-btn" ><a ng-click="closeMsgBox()" class="send-ok-btn">Ok</a></div>
+</div>

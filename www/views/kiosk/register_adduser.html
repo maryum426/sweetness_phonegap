@@ -1,0 +1,75 @@
+<header class="header new-page-style">
+    <div class="heading-title-holder"> <span class="heading-title-register">Join Place</span> </div>
+</header>
+<form name="kiosk_user">
+<div class="container_ROW">
+    <div class="container">
+        <div class="profile-connect">
+                <fieldset>
+                    <div class="inputfile-holder" ng-controller="CameraCtrl">
+                       
+                        <span class="profile-img-register register-big-profile">
+                           <img src="images/capture-img.png" ng-click="capturePhoto()" alt="Profile Picture"  ng-show='!userAvatar'>
+                           <img ng-show='userAvatar' ng-src="{{userAvatar}}" ng-click="capturePhoto()" class="imgavatar"/>    
+                           
+                           <section ng-show="loginInProgress_profile">
+
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+
+                                <!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
+                                    <div id="spinner2" align="center"></div>
+
+                                <br/><br/><br/><br/><br/>
+                                <!--<p>-->
+                                <!--<span>-->
+                                <!--<h1 style="color:#b3ee0e" data-ng-bind="section.loginInProgressMsg"></h1>-->
+                                <!--</span>-->
+                                <!--</p>-->
+                            </section>
+                           
+                        </span>
+                    </div>
+                    <div ng-hide="editInfo">
+                        <input type="text" class="textfield-holder" name="#" placeholder="Full Name" ng-model="kiosk.fullname"
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
+                        <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email"
+                               ng-class="{error: kiosk_user.email.$invalid}">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation"
+                               ng-minlength=3>
+                    </div>
+                    <div ng-show="editInfo">
+                        <input type="text" class="textfield-holder" name="fullname" ng-model="kiosk.fullname" required
+                               ng-minlength=3  ng-class="{error: kiosk_user.fullname.$invalid}">
+                        <input type="email" name="email" placeholder="Email Address" class="textfield-holder" ng-model="kiosk.email" required
+                               ng-class="{error: kiosk_user.email.$invalid}">
+                        <input type="text" name="vocation" placeholder="I make awesome espresso" class="textfield-holder" ng-model="kiosk.vocation"
+                               ng-minlength=3>
+                        
+                    </div>
+                </fieldset>
+        </div>
+    </div>
+</div>
+<div class="footer_GROUP">
+    <div class="footer_HOLDER">
+        <div class="profile-connect-bottom no_PADDING_TOP">
+            <ul class="submit-holder register_BUTTON_HOLDER">
+                <li><a class="back-button" ng-click="kioskRegisterCancel()">Logout</a></li>
+                <li>
+                    <!--<a ng-click="kioskRegister()" class="send-button register-button"
+                       ng-disabled="kiosk_user.fullname.$pristine || kiosk_user.fullname.$dirty && kiosk_user.fullname.$invalid || kiosk_user.email.$pristine || kiosk_user.email.$dirty && kiosk_user.email.$invalid"
+                        ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}">
+                        Join</a>-->
+                    <div ng-hide="editInfo">
+                        <input type="submit" ng-click="kioskRegisterJoin()" class="add_user-button ios-btn" value="Join"
+                               ng-class="{enable : !kiosk_user.fullname.$invalid || !kiosk_user.email.$invalid, disable : kiosk_user.fullname.$invalid || kiosk_user.email.$invalid}" />
+                    </div>
+                    <div ng-show="editInfo" >
+                        <input type="submit" ng-click="kioskRegisterJoin()" class="add_user-button ios-btn" value="Join" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</form>

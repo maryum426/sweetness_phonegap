@@ -1,0 +1,45 @@
+<div id="mybody" class="wrapper no-bg-color">
+    <header class="header no-padding">
+        <div class="reorder-holder">
+            <a href="#" class="reorder-color"><i class="icon-align-justify"></i></a> <span class="total-notification">5</span>
+        </div>
+        <div class="search-field">
+            <input type="text" name="#" placeholder="SEARCH">
+        </div>
+        <span class="profile-status"><img src="images/profile-pic-3.jpg" alt="image"></span>
+    </header>
+    <div class="banner"> <img src="images/main-circle-img-banner.png" alt="banner"> </div>
+    {{placeSearchResults}}
+    <div class="social-network">
+        <div class="social-holder-info"> <span class="social-title">COFFEE BEAN &amp; TEA LEAF</span> <em class="social-view">3701 OCEAN VIEW BLVD.</em> </div>
+        <ul class="link-info-holder small-heart">
+            <li><a href="#" class="icon-heart"></a></li>
+            <li><a href="#" class="icon-heart"></a></li>
+            <li><a href="#" class="icon-heart"></a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="claim-holder-box">
+            <span class="work-title">Would you like to claim this place?</span>
+            <ul class="claim-holder clh-padding">
+                <li><a href="#">back</a></li>
+                <li><a href="#" class="active">claim</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--<div class="footer-GROUP" id="footer_GROUP">
+        <div id="footerSlideContainer">
+            <div class="detail" id="footerSlideButton" style="background-position: left top;"></div>
+            <div id="footerSlideContent" style="height: 0px;">
+                <div class="footer-Slider">
+                    <input type="text" name="#" placeholder="enter your mobile number" class="textfield-kiosk">
+                    <ul class="claim-holder claim-holder-kisok">
+                        <li><a href="#">Cancel</a></li>
+                        <li><a class="active" href="#">ok</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+-->>{{placeSearchResults[0].get('photo')}}

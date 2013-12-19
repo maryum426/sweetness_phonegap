@@ -1,0 +1,48 @@
+<div id="mybody" class="wrapper no-bg-color">
+    <div class="container_ROW">
+        <header class="header new-page-style">
+            <div class="heading-title-holder">
+                <div class="alignLEFT"> <span class="heading-title">Register</span> </div>
+                <a class="registry-icon" ng-click="showDay()"></a> </div>
+        </header>
+        <div class="container">
+            <section class="content">
+                <section class="calendarWrapper" data-ng-app="calendar">
+                    <div class="calendar" data-ng-controller="CalendarController">
+                        <div class="controls">
+                            <button class="button previousMonth" data-ng-click="previousMonth()">&lt;</button>
+                            <button class="button nextMonth" data-ng-click="nextMonth()">&gt;</button>
+                            <h2 class="label">{{currentDate.format('{Month} {yyyy}')}}</h2>
+
+                            <table class="list">
+                                <tr class="row">
+                                    <td class="item weekday">s</td>
+                                    <td class="item weekday">m</td>
+                                    <td class="item weekday">t</td>
+                                    <td class="item weekday">w</td>
+                                    <td class="item weekday">t</td>
+                                    <td class="item weekday">f</td>
+                                    <td class="item weekday">s</td>
+                                </tr>
+                                <tr class="row" data-ng-repeat="week in dates">
+                                    <td class="item" data-ng-repeat="item in week" data-ng-class="{disabled:item.disabled, today:item.date.isToday()}"
+                                        data-ng-click="selectDate(item.date)"><span class="date">{{item.date.getDate()}}</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    <div class="footer_GROUP">
+        <div class="footer_HOLDER">
+            <div class="time-connect">
+                <ul class="claim-holder">
+                    <li><a href="#">Back</a></li>
+                    <li><a class="active" href="#">ok</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,251 @@
+<script>
+jQuery(function($) {
+		var open = false;
+		$('#footerSlideButton').click(function () {
+			if(open === false) {
+				$('#footerSlideContent').animate({ height: '253px' });
+				$(this).css('backgroundPosition', 'bottom left');
+				open = true;
+			} else {
+				$('#footerSlideContent').animate({ height: '0px'});
+				$(this).css('backgroundPosition', 'top left');
+				open = false;
+			}
+		});		
+});
+</script>
+<!-- ------------------------------------------------------------------------------- -->
+<!-- Page 1                                                                 -->
+<!-- --------------------------------------------------------------------------------->
+
+<div class="show-place-public" ng-controller="SweetCtrlPlace" ng-show="showPlaceFeed">
+
+    <div ng-show="gustPageInfo">
+        <div ng-repeat="gplace in currentPlace">
+            <header class="header">
+                <div class="heading-title-holder"><span class="heading-title">{{gplace.get("placeTitle")}}</span> <em
+                        class="heading-sub-title">{{gplace.get("address")}}</em></div>
+            </header>
+            <div class="banner">
+                <img src="images/main-circle-img-banner.png" alt="img" ng-src='{{ imagePlaceBanner || images/main-circle-img-banner.png}}'>
+            </div>
+            <span class="thankyou-title"> Love your barista? <strong>say thank you!</strong> </span>
+        </div>
+        <span place="{{currentPlace}}">{{currentPlace.placeName}}</span>
+        {{placeInfoImage}}
+    </div>
+</div>
+
+<section class="" ng-show="showPlaceFeed">
+
+    <section class="container">
+        <ul class="social-connection">
+            <li ng-repeat="uplace in usersInPlaces | startFrom:currentPagePlace*pageSize | limitTo:pageSize">
+          <span class="person-info">
+              <img tappublic ng-src="http://graph.facebook.com/{{uplace.get('userID')}}/picture?width=200&height=200"
+                   title="{{uplace.get('userName')}}" ng-click="sendPlaceGesture(uplace)"
+                   next="nextPage()" prev="prevPage()"
+                   friend="{{uplace}}">
+          </span>
+                <a href="#" class="person-name">{{uplace.get('userName').split(" ")[0]}}</a>
+            </li>
+        </ul>
+
+        <button ng-disabled="currentPagePlace == 0" ng-click="prevPage()"
+                class="previous-slide" ng-hide="currentPagePlace == 0">
+            Previous
+        </button>
+
+        <button ng-disabled="currentPagePlace >= usersInPlaces.length/pageSize - 1"
+                ng-click="nextPage()" class="next-slide"
+                ng-hide="currentPagePlace >= usersInPlaces.length/pageSize - 1">
+            Next
+        </button>
+
+    </section>
+
+    <div class="clear"></div>
+    <div class="create-a-place col07" ng-show="placeJoin">
+        <input name="" class="create-place-btn-search" type="button" value="Join This Place"
+               ng-click=addPlace(currentPlace)>
+    </div>
+    <div id="footer_GROUP" class="footer-GROUP">
+    <div id="footerSlideContainer">
+      <div id="footerSlideButton" class="detail"></div>
+      <div id="footerSlideContent">
+        <div class="footer-Slider">
+
+                <ul class="social-icons">
+                    <li>
+                        <span class="fbring">
+                            <a class="facebook" alt="facebook" ng-click="facebookPlaceLogin()" ng-controller="AuthController">facebook</a></li>
+                        </span>
+
+                </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ************************************************************************************* -->
+<!-- ************************************************************************************* -->
+
+<!-- ------------------------------------------------------------------------------- -->
+<!-- Page 2                                                                 -->
+<!-- ------------------------------------------------------------------------------- -->
+
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- Show the send gusture                                                                  -->
+<!-- -------------------------------------------------------------------------------------- -->
+<div class="header" ng-show="showPlaceGestureSendActionsPlace">
+    <div class="heading-title-holder"><span class="heading-title">{{userName}}</span>
+        <em class="heading-sub-title">{{currentPlace[0].get('placeTitle')}}</em>
+
+    </div>
+    <ul class="social-features">
+    </ul>
+</div>
+
+<section class="main-circle-area-place_place-name" ng-show="section.sending">
+    <div class="container_ROW notable">
+        <div class="container">
+            <div class="profile-connect">
+      <span class="profile-img-main heart-big-profile">
+            <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
+                ng-click="sendSweetnessPlaceGesture(placeInfo)" class="circle-main-img">
+            <span class="heart-icon heart-big"><img src="images/heart-icon.png" ng-click="sendSweetnessPlaceGesture(placeInfo)"></span>
+      </span></div>
+        </div>
+    </div>
+</section>
+
+<div ng-show="showPlaceGestureSendActionsPlace">
+    <div id="footer_GROUP" class="footer_GROUP notable">
+        <div class="footer_HOLDER">
+            <div class="profile-connect-bottom">
+                <ul class="submit-holder">
+                    <li><a ng-click="cancelSweetPlace(placeInfo)">Back</a></li>
+                    <li><a ng-click="sendSweetnessPlaceGesture(placeInfo)" class="send-button">Send</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------- -->
+
+<!-- ************************************************************************************* -->
+<!-- ************************************************************************************* -->
+
+<!-- ------------------------------------------------------------------------------- -->
+<!-- Page 3                                                                 -->
+<!-- ------------------------------------------------------------------------------- -->
+
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- Show the enter mobile                                                                  -->
+<!-- -------------------------------------------------------------------------------------- -->
+
+<div ng-show="showmobileActions">
+    <div class="header">
+        <div class="heading-title-holder"><span class="heading-title">{{userName}}</span>
+            <em class="heading-sub-title">{{currentPlace[0].get('placeTitle')}}</em>
+        </div>
+        <ul class="social-features">
+
+            <li>
+                <span class="inputfile-holder-2">
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container_ROW">
+        <div class="container">
+            <div class="profile-connect-other holder-time">
+                <span class="thanks_heading" ng-show="thanksheading">
+                    You just thanked {{userName}}!
+                </span>
+                <span class="profile-img-main bot-40" style="background-color:transparent;">
+                    <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
+                         ng-click="feedback()" class="circle-main-img">
+                    <span class="heart-icon"><img src="images/heart-icon.png" ng-click="feedback()"></span>
+                </span>
+
+                <div class='timer-app'>
+                    <div class="holder-grip">
+
+                        <div ang:round:progress data-round-progress-model="roundProgressData"
+                             data-round-progress-width="280"
+                             data-round-progress-height="280"
+                             data-round-progress-outer-circle-width="40"
+                             data-round-progress-inner-circle-width="10"
+                             data-round-progress-outer-circle-radius="120"
+                             data-round-progress-inner-circle-radius="70"
+                             data-round-progress-label-font="100pt Arial"
+                             data-round-progress-outer-circle-background-color="#fff"
+                             data-round-progress-outer-circle-foreground-color="#672971"
+                             data-round-progress-inner-circle-color="#fff"
+                             data-round-progress-label-color="#fff"></div>
+                    </div>
+                </div>
+
+                <span class="thanks_footer" ng-show="thanksfooter">
+                    Thankyou for writing to us!
+                </span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer_GROUP notable no_TOP_MARGIN">
+        <div class="footer_HOLDER">
+            <div class="profile-connect-bottom">
+                <ul class="submit-holder">
+
+                    <li class="feedback-btn">
+                        <a ng-click="feedback()" class="send-button">Please write to us with your feedback</a></li>
+                </ul>
+                
+                <!-- -----------------------------Feedback form ------------------------------------------- -->
+                <div class="feedbackFACEBOOK-HOLDER" ng-show="feedbackform">
+                <div class="feedbackFACEBOOK">
+
+                    <form name="mobileForm" ng-submit="newAuthPlace()">
+                        <fieldset>
+                            <textarea class="feedback-holder" name="comment" id="comment" ng-model="user.comment"
+                                      min="7" max="1100" required autofocus="autofocus">
+                                We'd love to read your feedback.
+                            </textarea>
+                            <input class="texfield-grey" name="username" id="username" placeholder="Full Name (optional)"
+                                   type="text" ng-model="user.name" min="7" max="110">
+                            <input class="texfield-grey" name="mnumber" id="mnumber" placeholder="Mobile Number (optional)"
+                                    type="text" ng-model="user.mobile" min="7" max="110" >
+                        </fieldset>
+
+                    <ul class="submit-holder">
+                        <li><a ng-click="newAuthPlaceCancel()">Cancel</a></li>
+                        <li>
+                            <!--<input type="submit" value="Done" ng-disabled="user.comment.$dirty && user.comment.$invalid"
+                               ng-class="{enable : !user.comment.$invalid , disable : user.comment.$invalid && !user.comment.$valid }"
+                               ng-click="newAuthPlace()" class="submit-button">-->
+                               <input type="submit" value="Done" ng-disabled="user.comment.$dirty && user.comment.$invalid"
+                               ng-class="{enable : !user.comment.$invalid , disable : user.comment.$invalid && !user.comment.$valid }"
+                               ng-click="newAuthPlace()" class="submit-button">
+
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+                </div>
+                <!-- ------------------------------------End------------------------------------------------ -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------- -->
+

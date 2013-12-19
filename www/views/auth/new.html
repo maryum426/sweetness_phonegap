@@ -1,0 +1,56 @@
+<div ng-controller="AuthController">
+    <div class="container_ROW">
+        <a class="logo"><img src="images/logo.png" alt="sweet"></a>
+        <section ng-hide="section.loginInProgress" class="kiosk-login-holder">
+            <form name="user_login">
+                <fieldset>
+                    <!--<span class="login-title">Login</span>-->
+<!--                    <input name="phone" placeholder="Enter Mobile Number" class="texfield" type="tel" ng-model="user.phone" ng-class="{error: user_login.phone.$invalid}">-->
+                    <!--<input type="password" name="#" placeholder="Password" class="texfield">
+                    <div class="login-holder">
+                        <span class="login-span-title">Forgot your password?</span>
+                        <span class="login-span-right">click here to <a href="#">Sign up now</a></span>
+                    </div>-->
+                    <!--<input name="" class="login-btn bot-margin" value="Login" type="button" ng-click="newAuthSms()">-->
+                    <input name="login" class="enterprice-title ios-btn" value="Login" type="button" 
+                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid"
+                           ng-class="{enable : !user_login.phone.$invalid ,disable : user_login.phone.$invalid}"
+                           ng-click="loginPage()">
+                    <input name="login" class="enterprice-title ios-btn" value="Launch Place" type="button" 
+                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid"
+                           ng-class="{enable : !user_login.phone.$invalid ,disable : user_login.phone.$invalid}"
+                           ng-click="launchPage()">
+<!--                    <span class="join-text">Click here to <a ng-click="joinKioskPlace()">Join</a></span>-->
+                </fieldset>
+            </form>
+            <input name="join" class="enterprice-title ios-btn" value="Join Team" type="button" ng-click="joinKioskPlace()">
+        </section>
+    </div>
+    <div class="kiosk_ADJUST"></div>
+    <div class="footer_GROUP">
+        <div class="footer_HOLDER">
+<!--             <span class="enterprice-title" ng-click="launchKioskPhone()">Launch Place</span>-->
+                <span class="email-footer">Need help? Email us at <a class="join-text" href="mailto:help@sweetness.io?Subject=" target="_top">help@sweetness.io</a></span>
+        </div>
+    </div>
+    <section ng-show="section.loginInProgress">
+
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+
+        <!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
+            <div id="spinner" align="center"></div>
+
+        <br/><br/><br/><br/><br/>
+        <!--<p>-->
+        <!--<span>-->
+        <!--<h1 style="color:#b3ee0e" data-ng-bind="section.loginInProgressMsg"></h1>-->
+        <!--</span>-->
+        <!--</p>-->
+    </section>
+    
+    <div class="col02-placeUserMsg2" ng-show="placeUserMsg">
+        <span class="place-msg">Please enter a mobile number</span>
+        <div class="send-btn" ><a ng-click="closeMsgBox()" class="send-ok-btn2">Ok</a></div>
+    </div>
+    
+</div>

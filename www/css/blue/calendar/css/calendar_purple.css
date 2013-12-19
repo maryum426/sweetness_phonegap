@@ -1,0 +1,120 @@
+.calendar {
+	font-family: 'Helvetica-Light';
+}
+.calendar .controls {
+	padding: 86px 0 20px 0;
+	position: relative;
+}
+.calendar .controls .previousMonth {
+	position: absolute;
+	left: 0;
+	background-image: url(../images/left-arrow.png);
+}
+.calendar .controls .nextMonth {
+	position: absolute;
+	right: 0;
+	background-image: url(../images/right-arrow.png);
+}
+.calendar .controls .button {
+	background-color: #9966cb;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border: medium none;
+    cursor: pointer;
+    height: 48px;
+    padding: 15px 22px;
+    text-indent: -9999px;
+    top: 60%;
+    width: 50px;
+}
+.calendar .controls .label {
+	border-bottom: 3px solid #DEDEDE;
+    color: #F24E22;
+    font-size: 47px;
+    font-weight: normal;
+    margin: 0 auto 45px;
+    max-width: 500px;
+    padding: 0 0 35px;
+    text-align: center;
+	text-transform: uppercase;
+}
+.calendar .list {
+	height: 100%;
+    list-style: none outside none;
+    margin: 0 auto;
+    width: 546px;
+    padding: 0;
+}
+.calendar .list .row { border-bottom: 2px solid white; }
+.calendar .list .row:last-child { border-bottom: none; }
+.calendar .list .item {
+	position: relative;
+    width: 6%;
+}
+.calendar .list .item:first-child { border-left: none; }
+.calendar .list .item:nth-child(7n+0) { border-right: none; }
+.calendar .list .item.disabled { 
+	/*background-color: #E3E3E3;*/ 
+}
+.calendar .list .item.today {
+	/*background-color: #747474;*/
+	height: 80px;
+}
+.calendar .list .item.selected { 
+	background-color: red;
+	height: 80px;
+}
+.calendar .list .item.weekday {
+	color: #9966cb;
+    font-size: 37px;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.calendar .list .item .date {
+	color: #DEDEDE;
+    display: block;
+    font-size: 42px;
+    position: relative;
+    text-align: center;
+}
+.calendar .list .item.today .date { 
+	border: 2px solid #ef135b;
+    border-radius: 50%;
+	-webkit-border-radius:50%;
+    color: #ef135b;
+    height: 96%;
+	padding: 0;
+	width: 96%;
+	line-height: 80px;
+	
+}
+.calendar .list .item.disabled .date { color: #9b9b9b; }
+header h1 {
+	font-size: 28px;
+	margin-bottom: 5px;
+}
+header h2 { font-size: 16px; }
+footer {
+	padding: 10px 0;
+	font-size: 11px;
+	font-color: #333;
+	border-top: 1px dotted #333;
+}
+footer p { margin-bottom: 5px; }
+.calendarWrapper {
+	margin-bottom: 34px; 
+}
+.content {
+    margin: 0;
+}
+.controls-day .button{
+	top:50% !important;
+}
+.list tr:first-child td {
+	height: 60px;
+	vertical-align: top;
+}
+.list tr td {
+	height: 76px;
+}

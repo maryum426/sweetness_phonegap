@@ -1,0 +1,437 @@
+<script>
+jQuery(function($) {
+		var open = false;
+		$('#footerSlideButton').click(function () {
+			if(open === false) {
+				$('#footerSlideContent').animate({ height: '253px' });
+				$(this).css('backgroundPosition', 'bottom left');
+                $(this).removeClass( "closeClass" ).addClass( "openClass" );
+				open = true;
+			} else {
+				$('#footerSlideContent').animate({ height: '0px'});
+				$(this).css('backgroundPosition', 'top left');
+                $(this).removeClass( "openClass" ).addClass( "closeClass" );
+				open = false;
+			}
+		});
+
+    $('#btnCancel').click(function () {
+        if(open === false) {
+            $('#footerSlideContent').animate({ height: '253px' });
+            $(this).css('backgroundPosition', 'bottom left');
+            $('#footerSlideButton').removeClass( "closeClass" ).addClass( "openClass" );
+            open = true;
+        } else {
+            $('#footerSlideContent').animate({ height: '0px'});
+            $(this).css('backgroundPosition', 'top left');
+            $('#footerSlideButton').removeClass( "openClass" ).addClass( "closeClass" );
+            open = false;
+        }
+    });
+});
+</script>
+<!-- ------------------------------------------------------------------------------- -->
+<!-- Page 1                                                                 -->
+<!-- --------------------------------------------------------------------------------->
+<div class="publicPage">
+<div class="show-place-public" ng-controller="SweetCtrlPlace" ng-show="showPlaceFeed">
+
+    <div ng-show="gustPageInfo">
+        <div ng-repeat="gplace in currentPlace">
+            <header class="header">
+                <div class="heading-title-holder"><span class="heading-title">{{gplace.get("placeSweetName")}}</span>
+                    <em class="heading-sub-title">{{gplace.get("address")}}</em>
+                </div>
+            </header>
+            <div class="banner">
+                <!--<img src="images_blue/banner-1.png" alt="banner">-->
+                <img src="images/banner-2.png" alt="img" ng-src='{{ imagePlaceBanner }}'>
+            </div>
+            <div class="header banner-footer">
+                <span class="thankyou-title">{{gplace.get("placeTitle")}}</span>
+            </div>
+            <!--<span class="top-heading"> ${{gplace.get("placeName")}} </span>-->
+            <!--<span class="top-heading">{{gplace.get("placeSweetName")}}</span>-->
+            <!--<span class="top-subheading"> Enjoyed exceptional service? </span>-->
+
+            <!--<span>{{gplace.get("placeDesc")}}</span>
+            <span>{{gplace.get("placeSweetName")}}</span>-->
+        </div>
+        <span place="{{currentPlace}}">{{currentPlace.placeName}}</span>
+        {{placeInfoImage}}
+    </div>
+</div>
+
+<section class="" ng-show="showPlaceFeed">
+
+<div class="container scroll">
+    <ul class="social-connection">
+        <li ng-repeat="uplace in usersInPlaces">
+                <span class="person-info">
+                    <!--ng-src="http://graph.facebook.com/{{uplace.get('userID')}}/picture?width=200&height=200"" -->
+                  <img  ng-src="http://fast-bayou-8907.herokuapp.com/convert?resize=102x102&source={{uplace.get('userPic')}}"
+                        title="{{uplace.get('userName')}}" ng-click="sendPlaceGesture(uplace)"
+                        friend="{{uplace}}" width="102" height="102">
+                </span>
+                <span class="heart-icon-2" ng-show="{{uplace.get('userID')}}" id="{{uplace.get('userID')}}">
+                    <!--<i class="icon-heart"></i>-->
+                    <img src="images/heart-icon.png" alt="image" class="heart-img-mini" />
+                </span>
+            <a class="person-name">{{uplace.get('userName').split(" ")[0]}}</a>
+        </li>
+        <div class="welcome-holder-box">
+            <span class="work-title">
+                {{emptyPlacesMsg}}
+            </span>
+        </div>
+    </ul>
+</div>
+
+
+    <div class="clear"></div>
+    <div class="create-a-place col07" ng-show="placeJoin">
+        <input name="" class="create-place-btn-search" type="button" value="Join This Place"
+               ng-click=addPlace(currentPlace)>
+    </div>
+<!--    <div id="footer_GROUP1" class="footer-GROUP">
+    <div id="footerSlideContainer">
+      <div id="footerSlideButton" class="detail closeClass"></div>
+      <div id="footerSlideContent">
+        <div class="footer-Slider">
+        		<input type="text" class="texfield" placeholder="enter your mobile number" ng-model="user.phone">
+                <ul class="submit-holder register_BUTTON_HOLDER">
+                  <li><a id="btnCancel">Cancel</a></li>
+                  <li><a ng-controller="AuthController" ng-click="newAuthAddUser()" class="send-button" title="{{placeKiosk}}" id="adduser">Login</a></li>
+                </ul>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+
+</section>
+
+<!-- ************************************************************************************* -->
+<!-- ************************************************************************************* -->
+
+<!-- ------------------------------------------------------------------------------- -->
+<!-- Page 2                                                                 -->
+<!-- ------------------------------------------------------------------------------- -->
+
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- Show the send gusture                                                                  -->
+<!-- -------------------------------------------------------------------------------------- -->
+<div class="header" ng-show="showPlaceGestureSendActionsPlace">
+    <div class="heading-title-holder"><span class="heading-title">{{userName}}</span>
+        <em class="heading-sub-title">{{placeInfo.get('vocation')}}</em>
+
+    </div>
+<!--    <ul class="social-features">
+        <li><a href="#" class="profile-icon"></a></li>
+        <li><a href="#" class="cam-icon"></a></li>
+        <li><a href="#" class="home-icon"></a></li>
+    </ul>-->
+</div>
+
+<section class="main-circle-area-place_place-name" ng-show="section.sending">
+    <div class="container_ROW notable">
+        <div class="container">
+            <div class="profile-connect">
+      <span class="profile-img-main heart-big-profile">
+            <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
+                ng-click="sendSweetnessPlaceGesture(placeInfo)" class="circle-main-img">
+            <span class="heart-icon heart-big"><img src="images/heart-icon.png" onclick="funChkBox()" ng-click="sendSweetnessPlaceGesture(placeInfo)"></span>
+      </span></div>
+        </div>
+    </div>
+
+</section>
+
+
+<div ng-show="showPlaceGestureSendActionsPlace">
+    <div id="footer_GROUP" class="footer_GROUP notable">
+        <div class="footer_HOLDER">
+            <div class="profile-connect-bottom">
+                <ul class="submit-holder">
+                    <li><a class="back-button" ng-click="cancelSweetPlace(placeInfo)">Back</a></li>
+                    <li><a class="done-button" onclick="funChkBox()" ng-click="sendSweetnessPlaceGesture(placeInfo)" class="send-button">Send</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------- -->
+
+<!-- ************************************************************************************* -->
+<!-- ************************************************************************************* -->
+
+<!-- ------------------------------------------------------------------------------- -->
+<!-- Page 3                                                                 -->
+<!-- ------------------------------------------------------------------------------- -->
+
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- Show the enter mobile                                                                  -->
+<!-- -------------------------------------------------------------------------------------- -->
+
+<div ng-show="showmobileActions">
+    <div class="header">
+        <div class="heading-title-holder"><span class="heading-title">{{userName}}</span>
+            <em class="heading-sub-title">{{placeInfo.get('vocation')}}</em>
+        </div>
+<!--        <ul class="social-features">
+            <li>
+                <span class="inputfile-holder-2">
+                    <a class="cam-icon active"></a>
+                    <input type="file" accept="image/*" id="capture" capture="camera" class="fileholder-btn-2" size="0">
+                    <sweetfileselect align="center" showprogress="util.showProgress" swfile="user.avatarUrl" attr1="50" >
+                    </sweetfileselect>
+                </span>
+            </li>
+        </ul>-->
+    </div>
+
+    <div class="container_ROW">
+        <div class="container">
+            <div class="profile-connect-other holder-time">
+                <span class="thanks_heading" ng-hide="thanksheading2"ng-show="thanksheading">
+                    You just thanked {{userName.split(" ")[0]}}!
+                </span>
+                <span class="thanks_heading" ng-show="thanksheading2">
+                    Thanks for sending a picture to {{userName.split(" ")[0]}}!
+                </span>
+                <span class="thanks_heading" ng-show="thanksfooter">
+                    Thanks for the message!
+                </span>
+                <span class="profile-img-main bot-40" style="background-color:transparent;">
+                    <img src="images/capture-img.png" alt="img" ng-src='{{magicButtonImage || images/capture-img.png}}'
+                         ng-click="feedback()" class="circle-main-img2">
+                    <span class="heart-icon"><img src="images/heart-icon.png" ng-click="feedback()"></span>
+                </span>
+
+                <div class='timer-app'>
+                    <div class="holder-grip">
+                        <div ang:round:progress data-round-progress-model="roundProgressData"
+                             data-round-progress-width="271"
+                             data-round-progress-height="271"
+                             data-round-progress-outer-circle-width="50"
+                             data-round-progress-inner-circle-width="10"
+                             data-round-progress-outer-circle-radius="110"
+                             data-round-progress-inner-circle-radius="70"
+                             data-round-progress-label-font="100pt Arial"
+                             data-round-progress-outer-circle-background-color="#fff"
+                             data-round-progress-outer-circle-foreground-color="#9966cb"
+                             data-round-progress-inner-circle-color="#fff"
+                             data-round-progress-label-color="#fff"></div>
+                    </div>
+                </div>
+                <div class="connector"></div>
+                    <div class="{{showprogressline}} strip-top-line">
+                        <span class="profile-img-main customer-img-profile" ng-controller="CameraCtrl">
+                            <img class="circle-main-img-cust" ng-show='!visitorAvatar' ng-src="images/bg-capture2.png" ng-click="capturePhotoCust()"/>
+                            <span ng-show='showprogress' class="progress_animation">
+                                <span><div id="spinner4" align="center"></div></span>
+                            </span>
+                            <img  class="circle-main-img-cust" ng-show='visitorAvatar' ng-src="{{visitorAvatar}}"/>
+                        </span>
+                    </div>
+
+                <form name="mobileForm" onkeypress="return event.keyCode != 13;">
+                    <fieldset>
+                        <!--<div class="login-field-place-comment">
+
+                        <div class="header">
+                            <div class="heading-title-holder"> <span class="heading-title">{{userName}}</span> <em class="heading-sub-title">STARBUCKS</em> </div>
+                            <ul class="social-features">
+                                <li><a href="#" class="profile-icon"></a></li>
+                                <li><a href="#" class="cam-icon active"></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="container_ROW notable">
+                            <div class="container">
+                                <div class="profile-connect profile-connect_TWO">
+                                    <span class="profile-img-main bot-40">
+                                        <img src="images/main-circle-img.png" alt="img" ng-src='{{magicButtonImage || images/main-circle-img.png}}'
+                                            ng-click="navigateToInteraction()" ondrop="drop(event)" ondragover="allowDrop(event)" class="circle-main-img">
+                                        <span class="heart-icon"><i class="icon-heart"></i></span>
+                                    </span>
+        <form name="mobileForm" onkeypress="return event.keyCode != 13;">
+          <fieldset>
+            <!--<div class="login-field-place-comment">
+
+                            <label class="form-label">Would you like to leave a comment? </label>
+                            <input name="comment" id="comment" placeholder="    i love this place" type="tel" ng-model="user.comment"
+                                   min="7" max="32">
+                        </div>-->
+                        <!--<div class="staric-holder"> <span class="star-title">Please rate your experience</span>
+                      <div class="rating-holder">
+                        &lt;!&ndash;<div class="ratingdiv">&ndash;&gt;
+                        &lt;!&ndash;Rating is {{rating}} <br/>&ndash;&gt;
+                        &lt;!&ndash;<span>Please rate your experience</span>&ndash;&gt;
+                <div star-rating rating-value="rating" max="5" on-rating-selected="saveRatingToServer(rating)"></div>
+                &lt;!&ndash;<rating value="rate" max="10" readonly="isReadonly"></rating>&ndash;&gt;
+                        &lt;!&ndash;</div>&ndash;&gt;
+              </div>
+            </div>-->
+                        <!--<textarea class="feedback-holder" name="comment" id="comment" min="7" max="32"
+                                  ng-model="user.comment">
+                            We'd love to read your feedback.
+                        </textarea>-->
+                        <!--<input class="texfield-grey" name="mnumber" id="mnumber"
+                               placeholder="enter your mobile, email or username to get your receipt"
+                               type="text" ng-model="user.mobile" min="7" max="110" required>-->
+                    </fieldset>
+                </form>
+
+                
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer_GROUP notable no_TOP_MARGIN">
+        <div class="footer_HOLDER">
+            <div class="profile-connect-bottom">
+                <ul class="submit-holder">
+
+                    <li class="feedback-btn" ng-show="thanksheading">
+                        <a ng-click="feedback()" class="send-button">Send a message or compliment to {{userName.split(" ")[0]}}</a></li>
+                </ul>
+                
+                <!-- -----------------------------Feedback form ------------------------------------------- -->
+                <div class="feedbackFACEBOOK-HOLDER" ng-show="feedbackform">
+                <div class="feedbackFACEBOOK">
+
+                    <form name="mobileForm" onkeypress="return event.keyCode != 13;">
+                    <!--<form name="mobileForm" ng-submit="newAuthPlace()">-->
+                        <fieldset>
+                            
+                            <div class="compliments">
+<!--                                <div class="comp">
+                                    <input type='checkbox' name='thing1' value='valuable' id="thing1"/><label for="thing1"><img id="img1" class="img_comp" src="images/helpful1.png"></label>
+                                    <div class="comp_text">Helpful</div>
+                                </div>-->
+                                <div class="comp">
+                                    <input type='checkbox' ng-model="user.chkEmotion4" name='thing4' value='valuable' id="thing4"/><label for="thing4"><img id="img4" class="img_comp" src="images/informed1.png"></label>
+                                    <div class="comp_text">Genius</div>
+                                </div>
+                                <div class="comp">
+                                    <input type='checkbox' ng-model="user.chkEmotion2" name='thing2' value='valuable' id="thing2"/><label for="thing2"><img id="img2" class="img_comp" src="images/polite1.png"></label>
+                                    <div class="comp_text">Cheerful</div>
+                                </div>
+<!--                                <div class="comp">
+                                    <input type='checkbox' name='thing3' value='valuable' id="thing3"/><label for="thing3"><img id="img3" class="img_comp" src="images/courteous1.png"></label>
+                                    <div class="comp_text">Courteous</div>
+                                </div>-->
+                                <div class="comp">
+                                    <input type='checkbox'  ng-model="user.chkEmotion5" name='thing5' value='valuable' id="thing5"/><label for="thing5"><img id="img5" class="img_comp" src="images/awesome1.png"></label>
+                                    <div class="comp_text">Rockstar</div>
+                                </div>
+                            </div>
+                            <textarea class="feedback-holder" name="comment" id="comment" ng-model="user.comment"
+                                      autofocus="autofocus" required>
+                                We'd love to read your feedback.
+                            </textarea>
+                            <input class="texfield-grey" name="username" id="username" placeholder="Full Name (optional)"
+                                   type="text" ng-model="user.name" min="7" max="110" required>
+                            <input class="texfield-grey" name="mnumber" id="mnumber" placeholder="Email Address (optional)"
+                                    type="text" ng-model="user.mobile" min="7" max="110" >
+                            
+                            
+
+                                <input type="checkbox" id="checkbox-2-1" class="regular-checkbox big-checkbox" ng-model="user.chkbox" />
+                                <label for="checkbox-2-1"></label>
+                                <span class="chkText" style="color: #fff;margin-left: 10px;font-size: 25px;">Copy the general manager</span>
+                                
+                        </fieldset>
+                    <ul class="submit-holder">
+                        <li><a class="back-button" ng-click="newAuthPlaceCancel()">Cancel</a></li>
+                        <li>
+                            <!--<a ng-disabled="mobileForm.mnumber.$dirty && mobileForm.mnumber.$invalid && !mobileForm.mnumber.$valid"
+                           ng-class="{enable : !mobileForm.mnumber.$invalid , disable : mobileForm.mnumber.$invalid && !mobileForm.mnumber.$valid }"
+                           ng-click="newAuthPlace()" class="send-button">Done</a>-->
+                            <a ng-disabled="mobileForm.name.$dirty && mobileForm.name.$invalid"
+                               ng-class="{enable : !mobileForm.comment.$invalid , disable : mobileForm.comment.$invalid && !mobileForm.comment.$valid }"
+                               ng-click="newAuthPlace(userName)" class="done-button">Done</a>
+                            <!--<input type="submit" value="Done" ng-disabled="mobileForm.comment.$dirty && mobileForm.comment.$invalid"
+                               ng-class="{enable : !mobileForm.comment.$invalid , disable : mobileForm.comment.$invalid && !mobileForm.comment.$valid }"
+                               ng-click="newAuthPlace()" class="submit-button">-->
+
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+                </div>
+                <!-- ------------------------------------End------------------------------------------------ -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------- -->
+
+<div class="col02-placeUserMsg" ng-show="placeUserMsg" ng-controller="AuthController">
+    <span class="place-msg">User already exist.</span>
+    <div class="send-btn" ><a ng-click="placeUserMsgBack()" class="send-ok-btn">Ok</a></div>
+</div>
+
+</div>
+
+<script>
+               
+    function funChkBox(){
+    $('#img2').attr('src',"images/polite1.png");
+    $('#img4').attr('src',"images/informed1.png");
+    $('#img5').attr('src',"images/awesome1.png");
+}
+//    $('#thing1').click(function(){
+//        if ($('#thing1').is(':checked')){
+//            $('#img1').attr('src',"images/helpful2.png");
+//        }
+//        else{
+//            $('#img1').attr('src',"images/helpful1.png");
+//        }
+//    });
+    
+    $('#thing2').click(function(){
+        if ($('#thing2').is(':checked')){
+            $('#img2').attr('src',"images/polite2.png");
+        }
+        else{
+            $('#img2').attr('src',"images/polite1.png");
+        }
+    });
+    
+//    $('#thing3').click(function(){
+//        if ($('#thing3').is(':checked')){
+//            $('#img3').attr('src',"images/courteous2.png");
+//        }
+//        else{
+//            $('#img3').attr('src',"images/courteous1.png");
+//        }
+//    });
+    
+    $('#thing4').click(function(){
+        if ($('#thing4').is(':checked')){
+            $('#img4').attr('src',"images/informed2.png");
+        }
+        else{
+            $('#img4').attr('src',"images/informed1.png");
+        }
+    });
+    
+    $('#thing5').click(function(){
+        if ($('#thing5').is(':checked')){
+            $('#img5').attr('src',"images/awesome2.png");
+        }
+        else{
+            $('#img5').attr('src',"images/awesome1.png");
+        }
+    });
+
+</script>

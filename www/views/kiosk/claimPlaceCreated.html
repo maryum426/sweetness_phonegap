@@ -1,0 +1,126 @@
+<div id="mybody" class="wrapper no-bg-color">
+    <header class="header">
+        <div class="heading-title-holder">
+            <div class="overflow-holder" ng-hide="editorEnabled">
+                <div>
+                    <div class="alignLEFT"><span class="heading-title heading-fixed">{{placeSearchResults.placeSweetName}}</span>
+                    <em class="heading-sub-title sub-heading-fixed">{{placeSearchResults.formatted_address}}</em> </div>
+                  </div>
+                    <a class="edit-holder" ng-click="enableEditor()" ng-show="previewdisable" ></a>
+                </div>
+                <div ng-show="editorEnabled" class="overflow-holder">
+                    <div class="editable-input-header">
+                        <div> 
+                            <input ng-model="kiosk.editableTitle" ng-show="editorEnabled">
+                            <div class="remove-holder-header">
+                                <a id="rc" class="remove-color-header" href="">
+                                    <i id="remove-icon" class="icon-remove-sign" ng-click="disableEditor()"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <input ng-model="kiosk.editableAddress" ng-show="editorEnabled">
+                            <div class="remove-holder-header2">
+                            <a id="rc" class="remove-color-header" href="">
+                                <i id="remove-icon" class="icon-remove-sign" ng-click="disableEditor()"></i>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="margin-stack">
+                    	<a ng-click="saveEditKiosk()" class="save-kiosk">Done</a>
+<!--                    <span class="or-text">or</span>-->
+<!--                    	<a ng-click="disableEditor()" class="cancel-kiosk">cancel</a>-->
+                    </div>
+                </div>
+
+
+        </div>
+    </header>
+    <div class="banner">
+        <img ng-show='!placeAvatar' src="images/banner-2.png" alt="banner">
+        <img  ng-show='placeAvatar' ng-src="{{placeAvatar}}"/>
+        <!--<a href="#" class="camera-icon camera-icon-right"></a>-->
+<!--        <div ng-show="previewdisable" ng-controller="CameraCtrl">
+            <div class="upload-title"><div  class="camera-icon camera-icon-right" ng-click="capturePlacePhoto()"></div></div>
+            <span ng-show='showprogress' class='showupload'>
+            <span class='progress_pic'>Uploading...</span>
+            </span>
+        </div>-->
+        <div ng-show="previewdisable">
+            <sweetplacepicselect align="center" showprogress="util.showProgress" swfile="user.avatarUrl" attr1="50" class="camera-icon camera-icon-right">
+            </sweetplacepicselect>
+            <section ng-show="loginInProgress_place">
+                    <div id='spinner3' align='center'></div>
+            </section>
+        </div>
+    </div>
+
+    
+        <div ng-hide="editorEnabledTitle" class="overflow-holder">
+            <div class="header banner-footer">
+    <!--        <span class="thankyou-title">{{placeSearchResults.kioskthankyoutitle}}
+                    <a class="edit-holder" ng-click="enableEditorTitle()" ng-show="previewdisable"></a>
+            </span>-->
+                <div class="alignCENTER">
+                      <span class="thankyou-title heading-fixed">{{placeSearchResults.kioskthankyoutitle}}</span>
+                </div>
+                <a class="edit-holder2" ng-click="enableEditorTitle()" ng-show="previewdisable" href="" style=""></a>
+            </div>
+         </div>
+    <div ng-show="editorEnabledTitle" class="overflow-holder thankyou-title">
+        <div class="editable-input">
+        <input ng-model="kiosk.editablethankyouTitle">
+        </div>
+        <div class="remove-holder2"><a id="rc" class="remove-color2" href=""><i id="remove-icon" class="icon-remove-sign icon-large" ng-click="disableEditorTitle()"></i></a></div>
+        <div class="btn-holders">
+        <a ng-click="saveEditKioskThankyou()" class="save-kiosk">Done</a>
+        
+        <!--<span class="or-text">or</span>-->
+<!--        <a ng-click="disableEditorTitle()" class="cancel-kiosk">cancel</a>-->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="claim-holder-box">
+            <div ng-hide="launch">
+                <span class="work-title">Great! You can edit your info above and then preview to launch your thank you display</span>
+            </div>
+            <div ng-show="launch">
+                <span class="work-title">Looking good? Now your staff members can join this place so your customers can thank them for being so awesome</span>
+            </div>
+            <ul class="claim-holder clh-padding">
+                <div ng-hide="launch">
+                    <li><a ng-click="placeClaimBack()">back</a></li>
+                    <li><a class="active" ng-click="previewKiosk()">Preview</a></li>
+                </div>
+                <div ng-show="launch">
+                    <li><a ng-click="previewBack()">back</a></li>
+                    <li><a class="active" ng-click="launchKiosk()">Launch</a></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <section ng-show="section.loginInProgress_launch">
+
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+        <!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
+            <div id="spinner5" align="center"></div>
+    </section>
+    <!--<div class="footer-GROUP" id="footer_GROUP">
+        <div id="footerSlideContainer">
+            <div class="detail" id="footerSlideButton" style="background-position: left top;"></div>
+            <div id="footerSlideContent" style="height: 0px;">
+                <div class="footer-Slider">
+                    <input type="text" name="#" placeholder="enter your mobile number" class="textfield-kiosk">
+                    <ul class="claim-holder claim-holder-kisok">
+                        <li><a href="#">Cancel</a></li>
+                        <li><a class="active" href="#">ok</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>

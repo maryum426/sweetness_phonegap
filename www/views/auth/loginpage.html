@@ -1,0 +1,45 @@
+<div ng-controller="AuthController">
+    <div class="container_ROW">
+        <a class="logo"><img src="images/logo.png" alt="sweet"></a>
+        <section ng-hide="section.loginInProgress" class="kiosk-login-holder2">
+            <form name="user_login" ng-submit="newAuthSms()">
+                <fieldset>
+                    <div class="enter-NUMBER-holder">
+                    <input name="phone" placeholder="Enter Mobile Number" class="texfield" type="tel" ng-minlength=7 ng-model="user.phone" ng-class="{error: user_login.phone.$invalid}" required>
+                    <a ng-click="backLogin()" class="login-btn-cancel3">Cancel</a>
+                    <input type="submit" name="" value="Login" class="login-btn ios-btn"
+                           ng-disabled="user_login.phone.$pristine || user_login.phone.$dirty && user_login.phone.$invalid || user_login.phone.$error.required || user_login.phone.$error.minlength"
+                           ng-class="{enable : !user_login.phone.$invalid ,disable : user_login.phone.$invalid}">
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+    <div class="kiosk_ADJUST"></div>
+    <div class="footer_GROUP">
+        <div class="footer_HOLDER">
+<!--             <span class="enterprice-title" ng-click="launchKioskPhone()">Launch Place</span>-->
+<!--                <span class="email-footer">Need help? Email us at <a class="join-text">help@sweetness.io</a></span>-->
+        </div>
+    </div>
+    <section ng-show="section.loginInProgress">
+
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+
+        <!--        <div align="center"><img src="images/spinner.gif" class="authanimation"/></div>-->
+            <div id="spinner" align="center"></div>
+
+        <br/><br/><br/><br/><br/>
+        <!--<p>-->
+        <!--<span>-->
+        <!--<h1 style="color:#b3ee0e" data-ng-bind="section.loginInProgressMsg"></h1>-->
+        <!--</span>-->
+        <!--</p>-->
+    </section>
+    
+    <div class="col02-placeUserMsg2" ng-show="placeUserMsg">
+        <span class="place-msg">Please enter a mobile number</span>
+        <div class="send-btn" ><a ng-click="closeMsgBox()" class="send-ok-btn2">Ok</a></div>
+    </div>
+    
+</div>
