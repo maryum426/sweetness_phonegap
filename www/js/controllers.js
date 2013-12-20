@@ -3477,13 +3477,14 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 //        if( !$scope.isValidEmailAddress( $scope.newSweet.mobile ) ){
 //            $scope.newSweet.mobile = '' ;
 //        }
-
+    console.log("REMAIL: " + rEmail);
       
 
         $scope.newSweet.owneremail = $rootScope.owneremail;
         $scope.newSweet.emailFname = userFname.split(" ")[0];
         $scope.newSweet.fromEmail = 'thankyou@sweetness.io';
         $scope.newSweet.receiverEmail = rEmail ;//'kashif.abdullah@virtual-force.com'; //'sweetest@sweetness.io';
+        
         //$scope.newSweet.bccEmail = bccEmail ;
         $scope.newSweet.subject = "You got a message";
 

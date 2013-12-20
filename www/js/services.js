@@ -2561,7 +2561,7 @@ angular.module('DataServices', ['ngResource'])
                         }
                     });
                 } else{
-                    utilService.sendEmail(fromEmail,receiverEmail,subject, m_phone, function (success) {
+                    utilService.sendEmailPP(fromEmail,receiverEmail,subject, m_phone, function (success) {
                         if (success) {
                             console.log("Email Bcc successfuly");
                             cb(true);
