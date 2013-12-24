@@ -2539,7 +2539,7 @@ angular.module('DataServices', ['ngResource'])
                             + newLine
                             + newLine
                             + "A customer just wrote to you: "
-                            + newLine
+                            //+ newLine
                             //+ newLine
                             //+ emailData.comment
                             + msg
