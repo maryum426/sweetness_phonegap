@@ -2502,9 +2502,11 @@ angular.module('DataServices', ['ngResource'])
                     msg += emailData.emoticons;
                 }
 
-                msg += newLine ;
-                msg += newLine ;
-                msg += emailData.comment;
+                if (emailData.comment != ''){
+                    msg += newLine ;
+                    msg += newLine ;
+                    msg += emailData.comment;
+                }
 
                 if(emailData.username != ''){
                     msg += newLine ;

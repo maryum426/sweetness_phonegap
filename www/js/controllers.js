@@ -3424,7 +3424,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         }
 
         $scope.newSweet.senderName = "SweetCustomer";
-        $scope.newSweet.comment = $scope.user.comment;
+        //$scope.newSweet.comment = $scope.user.comment;
         $scope.newSweet.rating = $scope.ratestar;
         $scope.newSweet.check = $scope.user.chkbox ;
         $scope.newSweet.emotion = emotion ;
@@ -3436,6 +3436,12 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
 //            $scope.newSweet.useremail = $rootScope.userEmail ;
 //        }
 
+        if ($scope.user.comment == null || document.getElementById("comment").value == ""){
+            $scope.newSweet.comment = '';
+        }else {
+            $scope.newSweet.comment = $scope.user.comment;
+        }
+        
         if ($scope.user.name == '' || $scope.user.name == null){
             $scope.newSweet.username = '';
         }else {
@@ -3489,8 +3495,8 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         $scope.newSweet.subject = "You got a message";
 
         // if user not giving any comment. No email send
-        if ($scope.user.comment == '' && $scope.user.comment == null && emoticons == ''){
-           
+        if (document.getElementById("comment").value == "" && emoticons == ''){
+            //console.log("No comment enter");
         }else {
             sweetService.sendCommentEmail($scope.newSweet, function (success) {
                
