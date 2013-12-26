@@ -3489,7 +3489,7 @@ function AppController($window, UpdateService, $http, $log, $scope, $route, $rou
         $scope.newSweet.subject = "You got a message";
 
         // if user not giving any comment. No email send
-        if ($scope.user.comment == '' || $scope.user.comment == null || emoticons == ''){
+        if ($scope.user.comment == '' && $scope.user.comment == null && emoticons == ''){
            
         }else {
             sweetService.sendCommentEmail($scope.newSweet, function (success) {
