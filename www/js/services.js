@@ -2228,6 +2228,26 @@ angular.module('DataServices', ['ngResource'])
 
             },
             
+            getPlaceOwnerEmail:function (ownerId, cb) {
+
+                Parse.Cloud.run("placeOwnerEmail",
+                    {
+                        userID:ownerId
+                    },
+                    {
+                        success:function (msg) {
+                            console.log("Owner email :: " + msg);
+                            cb(msg);
+                        },
+                        error:function (error, msg) {
+                            //console.log(error.code);
+                            cb(false);
+                        }
+                    }
+                );
+
+            },
+            
             getPlacesInfoByPhone:function (userId, cb) {
 
                 var SweetPlace = Parse.Object.extend("SweetPlace");
